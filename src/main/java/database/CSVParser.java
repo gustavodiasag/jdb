@@ -65,7 +65,7 @@ public class CSVParser {
          */
         String name = fields[1].replace("\"", "");
         float score = toNumber(fields[2]);
-
+        
         String[] genres = fields[3]
             .replace("\"", "")
             .split(",");
@@ -95,7 +95,7 @@ public class CSVParser {
      * always provide one, except for the "id" column.
      */
     private static float toNumber(String field) throws ParseException {
-        return (field.matches("[0-9]+"))
+        return (field.matches("[0-9]+|[0-9]+[.][0-9]+"))
             ? Float.parseFloat(field)
             : 0;
     }
