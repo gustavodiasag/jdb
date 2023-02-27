@@ -25,15 +25,15 @@ public class CSVParser {
         try {
             List<String> lines = Files
                 .readAllLines(
-            	    Paths.get(csvPath),
-            	    Charset.forName("UTF-8"));
+                    Paths.get(csvPath),
+                    Charset.forName("UTF-8"));
             
             Record[] records = new Record[lines.size()];
             
             int i = 0;
             
             for (String line : lines)
-            	records[i++] = buildFrom(line);
+                records[i++] = buildFrom(line);
             
             return records;
 
@@ -41,8 +41,8 @@ public class CSVParser {
             System.err.println(e.getMessage());
             
         } catch (ParseException e) {
-        	System.err.println(
-        		"Unable to parse csv lines: " + e.getLocalizedMessage());
+            System.err.println(
+                "Unable to parse csv lines: " + e.getLocalizedMessage());
         }
         
         return null;
@@ -98,15 +98,15 @@ public class CSVParser {
      * always provide one, except for the "id" column.
      */
     private static float toNumber(String field) throws ParseException {
-		return (field.matches("[0-9]+"))
-		    ? Float.parseFloat(field)
-		    : 0;
+        return (field.matches("[0-9]+"))
+            ? Float.parseFloat(field)
+            : 0;
     }
     
     // Dates are stored in the format year-month-day.
     private static Date toDate(String field) throws ParseException {
-		return new SimpleDateFormat("yyyy-MM-dd")
-			.parse(field);
+        return new SimpleDateFormat("yyyy-MM-dd")
+            .parse(field);
     }
 }
 

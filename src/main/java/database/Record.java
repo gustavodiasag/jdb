@@ -118,9 +118,9 @@ public class Record {
      * "database" file.
      */
     public void serialize(RandomAccessFile raf) throws IOException {
-    	
+        
         byte[] recordAsBytes = toByteArray();
-    	
+        
         /*
          * The bytes corresponding to the record are not directly written
          * 'cause each one is preceeded by some kind of header:
@@ -129,14 +129,14 @@ public class Record {
          */
 
         // Provides an efficient way to logically delete a record.
-    	raf.writeBoolean(valid);
+        raf.writeBoolean(valid);
 
         /*
          * Storing this information makes it possible to skip considerable
          * amounts of bytes, optmizing searching operations.
          */
-    	raf.writeInt(recordAsBytes.length);
-    	raf.write(recordAsBytes);
+        raf.writeInt(recordAsBytes.length);
+        raf.write(recordAsBytes);
     }
 
     // Used for updates that maintain the previous register's size.
@@ -150,10 +150,7 @@ public class Record {
         raf.write(recordAsBytes);
     }
 
-    /*
-     * Converts the attributes to their respective byte
-     * representation.
-     */
+    // Converts the attributes to their respective byte representation.
     public byte[] toByteArray() throws IOException {
 
         // Byte stream is closed even when an exception is thrown.
@@ -215,40 +212,40 @@ public class Record {
      * converting them to the respective object.
      */
     public static Record deserialize(RandomAccessFile raf)
-    	throws IOException {
-    	
-    	try {
-    		int id = raf.readInt();
-    		String name = readStr(raf);
-    		float score = raf.readFloat();
-    		
-    		String[] genres = new String[raf.readByte()];
-    		for (int i = 0; i < genres.length; i++)
-    			genres[i] = readStr(raf);
-    		
-    		int episodes = raf.readShort();
-    		
-    		String[] producers = new String[raf.readByte()];
-    		for (int i = 0; i < producers.length; i++)
-    			producers[i] = readStr(raf);
-    		
-    		Date date = new Date(raf.readLong());
-    		
-    		return new Record(
-    			true,   /* For now, it only retrieves valid records. */
-				id,
-				name,
-				score,
-				genres,
-				episodes,
-				producers,
-				date
-			);
-    		
-    	} catch (IOException e) {
-    		throw new IOException(
-    			"Error while reading data from file", e);
-    	}
+        throws IOException {
+        
+        try {
+            int id = raf.readInt();
+            String name = readStr(raf);
+            float score = raf.readFloat();
+            
+            String[] genres = new String[raf.readByte()];
+            for (int i = 0; i < genres.length; i++)
+                genres[i] = readStr(raf);
+            
+            int episodes = raf.readShort();
+            
+            String[] producers = new String[raf.readByte()];
+            for (int i = 0; i < producers.length; i++)
+                producers[i] = readStr(raf);
+            
+            Date date = new Date(raf.readLong());
+            
+            return new Record(
+                true,   /* For now, it only retrieves valid records. */
+                id,
+                name,
+                score,
+                genres,
+                episodes,
+                producers,
+                date
+            );
+            
+        } catch (IOException e) {
+            throw new IOException(
+                "Error while reading data from file", e);
+        }
     }
 
     // Returns the required String built with the header's help.

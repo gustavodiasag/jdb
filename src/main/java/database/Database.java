@@ -35,7 +35,7 @@ public class Database {
             raf.writeInt(lastId);
             
             for (Record record : records)
-            record.serialize(raf);
+                record.serialize(raf);
             
         } catch (IOException e) {
             throw new IOException(
