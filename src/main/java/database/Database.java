@@ -9,7 +9,6 @@ import java.io.RandomAccessFile;
  * manipulations that may occur in the "database".
  */
 public class Database {
-
     /*
      * Provides the reading and writing operations
      * in the file specified.
@@ -152,7 +151,6 @@ public class Database {
             raf.seek(Integer.BYTES);
 
             while (!eof()) {
-
                 // Position of the validation bit.
                 long pos = raf.getFilePointer();
                 boolean valid = raf.readBoolean();

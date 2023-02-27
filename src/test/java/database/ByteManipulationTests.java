@@ -3,6 +3,8 @@ package test.java.database;
 import static org.junit.jupiter.api.Assertions.*;
 
 import main.java.database.*;
+import main.java.database.Record;
+
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

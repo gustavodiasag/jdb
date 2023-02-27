@@ -14,10 +14,9 @@ import java.util.List;
  * respective entities from its content.
  */
 public class CSVParser {
-    
     /*
      * There's no reason for the source file to be provided
-     * either by the user or some other class.
+     * by the user.
      */
     private static final String csvPath = "src/main/resources/data.csv";
  
@@ -31,7 +30,6 @@ public class CSVParser {
             Record[] records = new Record[lines.size()];
             
             int i = 0;
-            
             for (String line : lines)
                 records[i++] = buildFrom(line);
             
@@ -50,7 +48,6 @@ public class CSVParser {
 
     // Returns the object generated from a raw file line.
     public static Record buildFrom(String line) throws ParseException {
-
         /*
          * Separates the line's content by commas ignoring the
          * ones inside double quotes.
