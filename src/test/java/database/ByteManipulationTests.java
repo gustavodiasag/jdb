@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 // Related to all the methods implemented within the Database class
 public class ByteManipulationTests {
@@ -22,7 +23,7 @@ public class ByteManipulationTests {
             File file = new File(binPath);
             Database db = new Database(file);
             
-            assertEquals(true, db.delete(18));
+            assertEquals(true, db.delete(15));
             
         } catch (IOException e) {
             System.err.println(e.getMessage());
@@ -30,17 +31,35 @@ public class ByteManipulationTests {
     }
     
     @Test
-    public void testSelection() throws IOException {
+    public void testSelection() {
         try {
             File file = new File(binPath);
             Database db = new Database(file);
             
-            assertEquals("Ring ni Kakero 1", db.get(23).getName());
+            Record expected = new Record(
+            	true,
+            	23,
+            	"Ring ni Kakero 1",
+            	6.38F,
+            	new String[] {"Action", "Shounen", "Sports"},
+            	12,
+            	new String[] {"Unknown"},
+            	new SimpleDateFormat("yyyy-MM-dd").parse("2023-02-17")
+            );
+            
+            
+            System.out.println(expected);
+            System.out.println(db.get(23));
+            assertEquals(expected, db.get(23));
             
         } catch (IOException e) {
             System.err.println(e.getMessage());
-        }
+            
+        } catch (ParseException e) {
+    		System.err.println(e.getMessage());
+    	}
     }
+    
     
     @Test 
     public void testInsertion() throws IOException {
