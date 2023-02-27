@@ -207,4 +207,8 @@ public class Database {
             	"Error while checking for EOF", e);
         }
     }
+
+	private int foo() {
+		return 2;
+	}
 }
