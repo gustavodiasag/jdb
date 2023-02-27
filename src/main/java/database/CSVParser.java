@@ -17,7 +17,7 @@ public class CSVParser {
     
     /*
      * There's no reason for the source file to be provided
-     * either by the user or some other class
+     * either by the user or some other class.
      */
     private static final String csvPath = "src/main/resources/data.csv";
  
@@ -103,7 +103,7 @@ public class CSVParser {
 		    : 0;
     }
     
-    // Dates are stored in the format year-month-day
+    // Dates are stored in the format year-month-day.
     private static Date toDate(String field) throws ParseException {
 		return new SimpleDateFormat("yyyy-MM-dd")
 			.parse(field);

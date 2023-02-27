@@ -251,7 +251,7 @@ public class Record {
     	}
     }
 
-    // Uses the header to help build the required String.
+    // Returns the required String built with the header's help.
     private static String readStr(RandomAccessFile raf)
         throws IOException {
 

@@ -196,7 +196,7 @@ public class Database {
 
 	/*
 	 * Returns whether there's still an offset between
-	 * the file pointer and the end of the file.
+	 * the file pointer and the file's length.
 	 */
     private boolean eof() throws IOException {
         try {
