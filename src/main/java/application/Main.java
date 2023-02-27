@@ -10,12 +10,12 @@ public class Main {
         File file = new File(args[0]);
         
         try {
-        	Database db = new Database(file);
-        	
-        	System.out.println(db.get(1).toString());
-        	
+            Database db = new Database(file);
+            
+            System.out.println(db.get(1).toString());
+            
         } catch (IOException e) {
-        	System.err.println(e.getLocalizedMessage());
+            System.err.println(e.getLocalizedMessage());
         }
     }
 }
