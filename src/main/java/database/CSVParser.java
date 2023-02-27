@@ -99,8 +99,8 @@ public class CSVParser {
      */
     private static float toNumber(String field) throws ParseException {
 		return (field.matches("[0-9]+"))
-			? Float.parseFloat(field)
-			: 0;
+		    ? Float.parseFloat(field)
+		    : 0;
     }
     
     // Dates are stored in the format year-month-day
