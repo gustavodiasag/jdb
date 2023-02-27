@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -122,7 +121,7 @@ public class Record {
 
         /*
          * The bytes corresponding to the record are not directly written
-         * 'cause each one is preceeded by some kind of header:
+         * 'cause each one is preceded by some kind of header:
          * 
          * <validation-bit> <byte-repr-length>
          */
@@ -132,7 +131,7 @@ public class Record {
 
         /*
          * Storing this information makes it possible to skip considerable
-         * amounts of bytes, optmizing searching operations.
+         * amounts of bytes, optimizing searching operations.
          */
         raf.writeInt(recordAsBytes.length);
         raf.write(recordAsBytes);
@@ -196,7 +195,7 @@ public class Record {
     private void writeStr(String field, DataOutputStream stream)
         throws IOException {
             
-        byte[] strBytes = field.getBytes(Charset.forName("UTF-8"));
+        byte[] strBytes = field.getBytes("UTF-8");
 
         // Length never surpasses the short type's limit.
         stream.writeShort(strBytes.length);
@@ -213,6 +212,7 @@ public class Record {
         try {
             int id = raf.readInt();
             String name = readStr(raf);
+            
             float score = raf.readFloat();
             
             String[] genres = new String[raf.readByte()];
