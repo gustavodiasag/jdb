@@ -179,7 +179,7 @@ public class Database {
         return false;
     }
     
-    // Returns the first four bytes of the file.
+    // Returns the file's first four bytes.
     private int getLastId() throws IOException {
         try {
             raf.seek(0);
