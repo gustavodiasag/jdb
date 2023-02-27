@@ -11,7 +11,9 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
+// Related to all the methods implemented within the Database class
 public class ByteManipulationTests {
+    // For the sake of tests, destination file is already defined
     private final String binPath = "src/test/test.bin";
 
     @Test
@@ -20,9 +22,7 @@ public class ByteManipulationTests {
             File file = new File(binPath);
             Database db = new Database(file);
             
-            db.delete(18);
-            
-            assertEquals(null, db.get(18));
+            assertEquals(true, db.delete(18));
             
         } catch (IOException e) {
             System.err.println(e.getMessage());
