@@ -12,10 +12,9 @@ public class Main {
         try {
             Database db = new Database(file);
             
-            System.out.println(db.get(1).toString());
-            
         } catch (IOException e) {
             System.err.println(e.getLocalizedMessage());
+            e.printStackTrace();
         }
     }
 }
