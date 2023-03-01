@@ -87,7 +87,7 @@ public class Database {
             record.serialize(raf);
 
             return true;
-
+            
         } catch (IOException e) {
             throw new IOException(
                 "Unable to insert record record:\n" + record.toString(), e);
@@ -129,7 +129,6 @@ public class Database {
                 } else
                     raf.skipBytes(recordSize);
             }
-            
         } catch (IOException e) {
             throw new IOException(
                 "Error while updating record with id: " + record.getId(), e);
@@ -167,13 +166,36 @@ public class Database {
                     // Deleted records must not be read.
                     raf.skipBytes(recordSize);
             }
-
         } catch (IOException e) {
             throw new IOException(
                 "Error while deleting record with id: " + id, e);
         }
 
         return false;
+    }
+    
+    public void sort(int limit) throws IOException {
+    	try {
+    		raf.seek(Integer.BYTES);
+    		
+    		while (!eof()) {
+    			long pos = raf.getFilePointer();
+    			Record[] records = new Record[limit];
+    			
+    			for (int i = 0; i < limit; i++)
+    				records[i] = Record.deserialize(raf);
+    			
+    			QuickSort.sort(records);
+    			raf.seek(pos);
+    			
+    			for (Record record : records)
+    				record.serialize(raf);
+    			
+    		}    		
+    	} catch (IOException e) {
+    		throw new IOException(
+    			"Error while sorting the database", e);
+    	}
     }
     
     // Returns the file's first four bytes.
