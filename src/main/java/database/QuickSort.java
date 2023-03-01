@@ -1,10 +1,8 @@
 package main.java.database;
 
-public interface Sorting {
+public class QuickSort {
 	
-	public void sort(int limit);
-	
-	public static void quickSort(Record[] records) {
+	public static void sort(Record[] records) {
 		quickSort(records, 0, records.length - 1);
 	}
 	
