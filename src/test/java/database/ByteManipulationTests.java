@@ -70,6 +70,8 @@ public class ByteManipulationTests {
     public void testInsertion() {
         try {
             Database db = new Database(new File(binPath));
+            
+            // Random record to be inserted
             Record record = CSVParser
             	.buildFrom("23,foo,bar,\"baz, qux, quuz\",1,corge,2023-02-17");
             
