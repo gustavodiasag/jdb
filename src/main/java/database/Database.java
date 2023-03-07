@@ -176,25 +176,29 @@ public class Database {
     
     public void sort(int limit) throws IOException {
     	try {
+    		RandomAccessFile first = new RandomAccessFile("tmp1", "rw");
+    		RandomAccessFile second = new RandomAccessFile("tmp2", "rw");
     		raf.seek(Integer.BYTES);
     		
     		while (!eof()) {
-    			long pos = raf.getFilePointer();
-    			Record[] records = new Record[limit];
+    			if (!eof())
+    				sort(first, limit);
     			
-    			for (int i = 0; i < limit; i++)
-    				records[i] = Record.deserialize(raf);
-    			
-    			QuickSort.sort(records);
-    			raf.seek(pos);
-    			
-    			for (Record record : records)
-    				record.serialize(raf);
-    			
-    		}    		
+    			if (!eof())
+    				sort(second, limit);
+    		}
+    		
     	} catch (IOException e) {
-    		throw new IOException(
-    			"Error while sorting the database", e);
+    		throw new IOException("Unable to sort", e);
+    	}
+    }
+    
+    private void sort(RandomAccessFile tmp, int limit) throws IOException {
+    	try {
+    		Record[] records = new Record[limit];
+    		
+    	} catch (IOException e) {
+    		throw new IOException("Error while sorting", e);
     	}
     }
     
