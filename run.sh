@@ -6,7 +6,7 @@ if [ $# != 1 ]; then
 fi
 
 # Directory where jar file is located
-dir=./bin/
+dir=./bin
 
 # jar file name
 jar=project.jar

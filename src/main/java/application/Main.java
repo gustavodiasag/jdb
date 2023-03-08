@@ -12,6 +12,8 @@ public class Main {
         try {
             Database db = new Database(file);
             
+            db.sort(5);
+            
         } catch (IOException e) {
             System.err.println(e.getLocalizedMessage());
             e.printStackTrace();

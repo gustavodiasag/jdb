@@ -181,8 +181,7 @@ public class Database {
     		raf.seek(Integer.BYTES);
     		
     		while (!eof()) {
-    			if (!eof())
-    				sort(first, limit);
+				sort(first, limit);
     			
     			if (!eof())
     				sort(second, limit);
@@ -196,6 +195,15 @@ public class Database {
     private void sort(RandomAccessFile tmp, int limit) throws IOException {
     	try {
     		Record[] records = new Record[limit];
+    		System.out.println(raf.getFilePointer());
+    		System.out.println(raf.readInt());
+    		for (int i = 0; i < records.length; i++)
+    			records[i] = Record.deserialize(raf);
+    		
+    		QuickSort.sort(records);
+    		
+    		for (Record record : records)
+    			record.serialize(tmp);
     		
     	} catch (IOException e) {
     		throw new IOException("Error while sorting", e);
