@@ -8,7 +8,7 @@ import java.io.RandomAccessFile;
  * Responsible for managing all operations and
  * manipulations that may occur in the "database".
  */
-public class Database {
+public class Database implements Sorting {
     /*
      * Provides the reading and writing operations
      * in the file specified.
@@ -50,11 +50,13 @@ public class Database {
             // Header is not useful for this operation.
             raf.seek(Integer.BYTES);
             
-            while (!eof()) {
+            while (!eof(raf)) {
+                long pos = raf.getFilePointer();
                 boolean valid = raf.readBoolean();
                 int recordSize = raf.readInt();
                 
                 if (valid) {
+                    raf.seek(pos);
                     Record r = Record.deserialize(raf);
                     
                     if (r.getId() == id)
@@ -102,12 +104,13 @@ public class Database {
         try {
             raf.seek(Integer.BYTES);
             
-            while (!eof()) {
+            while (!eof(raf)) {
                 long pos = raf.getFilePointer();
                 boolean valid = raf.readBoolean();
                 int recordSize = raf.readInt();
                 
                 if (valid) {
+                    raf.seek(pos);
                     Record r = Record.deserialize(raf);
                     
                     if (record.getId() == r.getId()) {
@@ -146,13 +149,14 @@ public class Database {
             // Header is not useful for this operation.
             raf.seek(Integer.BYTES);
 
-            while (!eof()) {
+            while (!eof(raf)) {
                 // Position of the validation bit.
                 long pos = raf.getFilePointer();
                 boolean valid = raf.readBoolean();
                 int recordSize = raf.readInt();
 
                 if (valid) {
+                    raf.seek(pos);
                     Record r = Record.deserialize(raf);
 
                     if (r.getId() == id) {
@@ -175,31 +179,77 @@ public class Database {
     }
     
     public void sort(int limit) throws IOException {
-    	try {
-    		RandomAccessFile first = new RandomAccessFile("tmp1", "rw");
-    		RandomAccessFile second = new RandomAccessFile("tmp2", "rw");
-    		raf.seek(Integer.BYTES);
-    		
-    		while (!eof()) {
-    			if (!eof())
-    				sort(first, limit);
-    			
-    			if (!eof())
-    				sort(second, limit);
-    		}
-    		
-    	} catch (IOException e) {
-    		throw new IOException("Unable to sort", e);
-    	}
+        try {
+            RandomAccessFile first = new RandomAccessFile("tmp1", "rw");
+            RandomAccessFile second = new RandomAccessFile("tmp2", "rw");
+            raf.seek(Integer.BYTES);
+            
+            while (!eof(raf)) {
+                sort(first, limit);
+                sort(second, limit);
+            }
+            
+            intercalate(first, second, limit);
+            
+        } catch (IOException e) {
+            throw new IOException("Unable to sort", e);
+        }
     }
     
     private void sort(RandomAccessFile tmp, int limit) throws IOException {
-    	try {
-    		Record[] records = new Record[limit];
-    		
-    	} catch (IOException e) {
-    		throw new IOException("Error while sorting", e);
-    	}
+        try {
+            Record[] records = new Record[limit];
+            
+            int i = 0;
+            for (; !eof(raf) && i < limit; i++)
+                records[i] = Record.deserialize(raf);
+            
+            /*
+             * This notation guarantees that the sorting operation
+             * will only consider existing objects.
+             */
+            quickSort(records, 0, i-1);
+            
+            for (Record record : records)
+                if (record != null) 
+                    record.serialize(tmp);
+            
+        } catch (IOException e) {
+            throw new IOException("Error while sorting", e);
+        }
+    }
+    
+    private void intercalate(RandomAccessFile first, RandomAccessFile second, int limit)
+        throws IOException {
+        
+        try {
+            first.seek(0);
+            second.seek(0);
+            
+            RandomAccessFile third = new RandomAccessFile("tmp3", "rw");
+            RandomAccessFile fourth = new RandomAccessFile("tmp4", "rw");
+            
+            Record firstRecord, secondRecord;
+            
+            while (!eof(first) && !eof(second)) {
+                long firstPos = first.getFilePointer();
+                long secondPos = second.getFilePointer();
+                
+                firstRecord = Record.deserialize(first);
+                secondRecord = Record.deserialize(second);
+                
+                if (firstRecord.getEpisodes() < secondRecord.getEpisodes()) {
+                    firstRecord.serialize(third);
+                    second.seek(secondPos);
+                    
+                } else {
+                    secondRecord.serialize(fourth);
+                }
+            }
+            
+        } catch (IOException e) {
+            throw new IOException("Error while intercalating ", e);
+        }
     }
     
     // Returns the file's first four bytes.
@@ -219,7 +269,7 @@ public class Database {
      * Returns whether there's still an offset between
      * the file pointer and the file's length.
      */
-    private boolean eof() throws IOException {
+    private boolean eof(RandomAccessFile raf) throws IOException {
         try {
             return raf.getFilePointer() == raf.length();
 

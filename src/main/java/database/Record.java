@@ -117,7 +117,7 @@ public class Record {
      * "database" file.
      */
     public void serialize(RandomAccessFile raf) throws IOException {
-        byte[] recordAsBytes = toByteArray();
+        byte[] recordAsBytes = this.toByteArray();
 
         /*
          * The bytes corresponding to the record are not directly written
@@ -198,7 +198,7 @@ public class Record {
         byte[] strBytes = field.getBytes("UTF-8");
 
         // Length never surpasses the short type's limit.
-        stream.writeShort(strBytes.length);
+        stream.writeInt(strBytes.length);
         stream.write(strBytes);
     }
     
@@ -210,25 +210,28 @@ public class Record {
         throws IOException {
         
         try {
+            boolean valid = raf.readBoolean();
+            
+            raf.readInt();
+            
             int id = raf.readInt();
             String name = readStr(raf);
-            
             float score = raf.readFloat();
             
             String[] genres = new String[raf.readByte()];
-            for (int i = 0; i < genres.length; i++)
+            for (byte i = 0; i < genres.length; i++)
                 genres[i] = readStr(raf);
             
-            int episodes = raf.readShort();
+            short episodes = raf.readShort();
             
             String[] producers = new String[raf.readByte()];
-            for (int i = 0; i < producers.length; i++)
-                producers[i] = readStr(raf);
+            for (byte b = 0; b < producers.length; b++)
+                producers[b] = readStr(raf);
             
             Date date = new Date(raf.readLong());
             
             return new Record(
-                true,   /* Only retrieves valid records. */
+                valid,
                 id,
                 name,
                 score,
@@ -248,7 +251,7 @@ public class Record {
     private static String readStr(RandomAccessFile raf)
         throws IOException {
 
-        byte[] strBytes = new byte[raf.readShort()];
+        byte[] strBytes = new byte[raf.readInt()];
         raf.read(strBytes);
 
         return new String(strBytes);
