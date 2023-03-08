@@ -98,15 +98,12 @@ public class CSVParser {
      * always provide one, except for the "id" column.
      */
     private static float toNumber(String field) throws ParseException {
-		return (field.matches("[0-9]+"))
-		    ? Float.parseFloat(field)
-		    : 0;
+		return (field.matches("[0-9]+")) ? Float.parseFloat(field) : 0;
     }
     
     // Dates are stored in the format year-month-day.
     private static Date toDate(String field) throws ParseException {
-		return new SimpleDateFormat("yyyy-MM-dd")
-			.parse(field);
+		return new SimpleDateFormat("yyyy-MM-dd").parse(field);
     }
 }
 
