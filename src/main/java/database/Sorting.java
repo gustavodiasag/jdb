@@ -8,10 +8,10 @@ public interface Sorting {
         Record pivot = records[(right + left)/2];
         
         while (i <= j) {
-            while (records[i] != null && records[i].getEpisodes() < pivot.getEpisodes())
+            while (records[i].getId() < pivot.getId())
                 i++;
             
-            while (records[j] != null && records[j].getEpisodes() > pivot.getEpisodes())
+            while (records[j].getId() > pivot.getId())
                 j--;
             
             if (i <= j) {

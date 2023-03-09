@@ -180,16 +180,27 @@ public class Database implements Sorting {
     
     public void sort(int limit) throws IOException {
         try {
-            RandomAccessFile first = new RandomAccessFile("tmp1", "rw");
-            RandomAccessFile second = new RandomAccessFile("tmp2", "rw");
+            RandomAccessFile[] files = new RandomAccessFile[4];
+            
+            for (int i = 0; i < 4; i++)
+                files[i] = new RandomAccessFile("tmp" + i, "rw");
+            
             raf.seek(Integer.BYTES);
             
             while (!eof(raf)) {
-                sort(first, limit);
-                sort(second, limit);
+                sort(files[0], limit);
+                sort(files[1], limit);
             }
             
-            intercalate(first, second, limit);
+            /*
+             * Once all the registers are stored into only one destination
+             * file, the sorting is complete.
+             */
+            for (int i = limit; i < 50000; i *= 2) {
+                intercalate(files[0], files[1], files[2], files[3], i);
+                intercalate(files[2], files[3], files[0], files[1], i);
+            }
+                
             
         } catch (IOException e) {
             throw new IOException("Unable to sort", e);
@@ -207,49 +218,94 @@ public class Database implements Sorting {
                 records[i] = Record.deserialize(raf);
             
             /*
-             * Guarantees that the sorting operation will only consider
-             * existing objects.
+             * Limiting the array like this guarantees that the sorting
+             * operation will only consider existing objects (not null).
              */
             quickSort(records, 0, i-1);
             
             for (int j = 0; j < i; j++)
-            	records[j].serialize(tmp);
+                records[j].serialize(tmp);
             
         } catch (IOException e) {
             throw new IOException("Error while sorting", e);
         }
     }
     
-    private void intercalate(RandomAccessFile first, RandomAccessFile second, int limit)
-        throws IOException {
-        
+    /*
+     * Merges the already sorted records from the first
+     * two files to the last ones considering the
+     * established limit.
+     */
+    private void intercalate
+    (
+        RandomAccessFile first,
+        RandomAccessFile second,
+        RandomAccessFile third,
+        RandomAccessFile fourth,
+        int limit	
+    ) {
         try {
+            // Used to switch between destination files.
+            boolean fileControl = false;
             first.seek(0);
             second.seek(0);
             
-            RandomAccessFile third = new RandomAccessFile("tmp3", "rw");
-            RandomAccessFile fourth = new RandomAccessFile("tmp4", "rw");
-            
-            Record firstRecord, secondRecord;
-            
+            // Deals with all the intervals except the last one.
             while (!eof(first) && !eof(second)) {
-                long firstPos = first.getFilePointer();
-                long secondPos = second.getFilePointer();
-                
-                firstRecord = Record.deserialize(first);
-                secondRecord = Record.deserialize(second);
-                
-                if (firstRecord.getEpisodes() < secondRecord.getEpisodes()) {
-                    firstRecord.serialize(third);
-                    second.seek(secondPos);
+                /*
+                 * Once the limit is defined, the amount of records
+                 * transmitted to another file is twice it's size.
+                 */
+                for (int i = 0; i < limit*2; i++) {
+                    /*
+                     * While analyzing record by record, EOF may get
+                     * reached before the outer loop condition.
+                     */
+                    if (eof(first) || eof(second))
+                        break;
+                    /*
+                     * Position to return to when a record has a higher id
+                     * than the other, so new comparisons can happen.
+                     */
+                    long firstPos = first.getFilePointer();
+                    long secondPos = second.getFilePointer();
+                    // Loaded for attribute comparison.
+                    Record fromFirst = Record.deserialize(first);
+                    Record fromSecond = Record.deserialize(second);
                     
-                } else {
-                    secondRecord.serialize(fourth);
+                    if (fromFirst.getId() < fromSecond.getId()) {
+                        fromFirst.serialize((fileControl) ? fourth : third);
+                        second.seek(secondPos);
+                        
+                    } else {
+                        fromSecond.serialize((fileControl) ? fourth : third);
+                        first.seek(firstPos);
+                    }
+                }
+                
+                fileControl = !fileControl;
+            }
+            
+            if (eof(first)) {
+                while (!eof(second)) {
+                    Record record = Record.deserialize(second);
+                    record.serialize(fourth);
                 }
             }
             
+            if (eof(second)) {
+                while (!eof(first)) {
+                    Record record = Record.deserialize(first);
+                    record.serialize(fourth);
+                }
+            }
+            
+            first.setLength(0);
+            second.setLength(0);
+            
         } catch (IOException e) {
-            throw new IOException("Error while intercalating ", e);
+            System.err.println("Error while intercalating");
+            e.printStackTrace();
         }
     }
     
