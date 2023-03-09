@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -118,25 +117,24 @@ public class Record {
      * "database" file.
      */
     public void serialize(RandomAccessFile raf) throws IOException {
-    	
-        byte[] recordAsBytes = toByteArray();
-    	
+        byte[] recordAsBytes = this.toByteArray();
+
         /*
          * The bytes corresponding to the record are not directly written
-         * 'cause each one is preceeded by some kind of header:
+         * 'cause each one is preceded by some kind of header:
          * 
          * <validation-bit> <byte-repr-length>
          */
 
         // Provides an efficient way to logically delete a record.
-    	raf.writeBoolean(valid);
+        raf.writeBoolean(valid);
 
         /*
          * Storing this information makes it possible to skip considerable
-         * amounts of bytes, optmizing searching operations.
+         * amounts of bytes, optimizing searching operations.
          */
-    	raf.writeInt(recordAsBytes.length);
-    	raf.write(recordAsBytes);
+        raf.writeInt(recordAsBytes.length);
+        raf.write(recordAsBytes);
     }
 
     // Used for updates that maintain the previous register's size.
@@ -150,16 +148,10 @@ public class Record {
         raf.write(recordAsBytes);
     }
 
-    /*
-     * Converts the attributes to their respective byte
-     * representation.
-     */
+    // Converts the attributes to their respective byte representation.
     public byte[] toByteArray() throws IOException {
-
         // Byte stream is closed even when an exception is thrown.
         try (ByteArrayOutputStream byteStream = new ByteArrayOutputStream()) {
-
-            // Necessary to actually convert the values.
             DataOutputStream stream = new DataOutputStream(byteStream);
     
             stream.writeInt(id);
@@ -172,10 +164,10 @@ public class Record {
             stream.writeByte(genres.length);
             for (String genre : genres)
                 writeStr(genre, stream);
-    
+
             // Should never surpass the limit of a short integer.
             stream.writeShort(episodes);
-    
+
             // Byte range is enough to store the amount of producers.
             stream.writeByte(producers.length);
             for (String producer : producers)
@@ -203,10 +195,10 @@ public class Record {
     private void writeStr(String field, DataOutputStream stream)
         throws IOException {
             
-        byte[] strBytes = field.getBytes(Charset.forName("UTF-8"));
+        byte[] strBytes = field.getBytes("UTF-8");
 
         // Length never surpasses the short type's limit.
-        stream.writeShort(strBytes.length);
+        stream.writeInt(strBytes.length);
         stream.write(strBytes);
     }
     
@@ -215,47 +207,51 @@ public class Record {
      * converting them to the respective object.
      */
     public static Record deserialize(RandomAccessFile raf)
-    	throws IOException {
-    	
-    	try {
-    		int id = raf.readInt();
-    		String name = readStr(raf);
-    		float score = raf.readFloat();
-    		
-    		String[] genres = new String[raf.readByte()];
-    		for (int i = 0; i < genres.length; i++)
-    			genres[i] = readStr(raf);
-    		
-    		int episodes = raf.readShort();
-    		
-    		String[] producers = new String[raf.readByte()];
-    		for (int i = 0; i < producers.length; i++)
-    			producers[i] = readStr(raf);
-    		
-    		Date date = new Date(raf.readLong());
-    		
-    		return new Record(
-    			true,   /* For now, it only retrieves valid records. */
-				id,
-				name,
-				score,
-				genres,
-				episodes,
-				producers,
-				date
-			);
-    		
-    	} catch (IOException e) {
-    		throw new IOException(
-    			"Error while reading data from file", e);
-    	}
+        throws IOException {
+        
+        try {
+            boolean valid = raf.readBoolean();
+            
+            raf.readInt();
+            
+            int id = raf.readInt();
+            String name = readStr(raf);
+            float score = raf.readFloat();
+            
+            String[] genres = new String[raf.readByte()];
+            for (byte i = 0; i < genres.length; i++)
+                genres[i] = readStr(raf);
+            
+            short episodes = raf.readShort();
+            
+            String[] producers = new String[raf.readByte()];
+            for (byte b = 0; b < producers.length; b++)
+                producers[b] = readStr(raf);
+            
+            Date date = new Date(raf.readLong());
+            
+            return new Record(
+                valid,
+                id,
+                name,
+                score,
+                genres,
+                episodes,
+                producers,
+                date
+            );
+            
+        } catch (IOException e) {
+            throw new IOException(
+                "Error while reading data from file", e);
+        }
     }
 
     // Returns the required String built with the header's help.
     private static String readStr(RandomAccessFile raf)
         throws IOException {
 
-        byte[] strBytes = new byte[raf.readShort()];
+        byte[] strBytes = new byte[raf.readInt()];
         raf.read(strBytes);
 
         return new String(strBytes);

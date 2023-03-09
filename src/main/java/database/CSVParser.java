@@ -14,10 +14,9 @@ import java.util.List;
  * respective entities from its content.
  */
 public class CSVParser {
-    
     /*
      * There's no reason for the source file to be provided
-     * either by the user or some other class.
+     * by the user.
      */
     private static final String csvPath = "src/main/resources/data.csv";
  
@@ -25,15 +24,14 @@ public class CSVParser {
         try {
             List<String> lines = Files
                 .readAllLines(
-            	    Paths.get(csvPath),
-            	    Charset.forName("UTF-8"));
+                    Paths.get(csvPath),
+                    Charset.forName("UTF-8"));
             
             Record[] records = new Record[lines.size()];
             
             int i = 0;
-            
             for (String line : lines)
-            	records[i++] = buildFrom(line);
+                records[i++] = buildFrom(line);
             
             return records;
 
@@ -41,8 +39,8 @@ public class CSVParser {
             System.err.println(e.getMessage());
             
         } catch (ParseException e) {
-        	System.err.println(
-        		"Unable to parse csv lines: " + e.getLocalizedMessage());
+            System.err.println(
+                "Unable to parse csv lines: " + e.getLocalizedMessage());
         }
         
         return null;
@@ -50,7 +48,6 @@ public class CSVParser {
 
     // Returns the object generated from a raw file line.
     public static Record buildFrom(String line) throws ParseException {
-
         /*
          * Separates the line's content by commas ignoring the
          * ones inside double quotes.
@@ -68,7 +65,7 @@ public class CSVParser {
          */
         String name = fields[1].replace("\"", "");
         float score = toNumber(fields[2]);
-
+        
         String[] genres = fields[3]
             .replace("\"", "")
             .split(",");
