@@ -201,18 +201,19 @@ public class Database implements Sorting {
             Record[] records = new Record[limit];
             
             int i = 0;
+            
+            // Prioritizes end-of-file considering the last iteration. 
             for (; !eof(raf) && i < limit; i++)
                 records[i] = Record.deserialize(raf);
             
             /*
-             * This notation guarantees that the sorting operation
-             * will only consider existing objects.
+             * Guarantees that the sorting operation will only consider
+             * existing objects.
              */
             quickSort(records, 0, i-1);
             
-            for (Record record : records)
-                if (record != null) 
-                    record.serialize(tmp);
+            for (int j = 0; j < i; j++)
+            	records[j].serialize(tmp);
             
         } catch (IOException e) {
             throw new IOException("Error while sorting", e);
