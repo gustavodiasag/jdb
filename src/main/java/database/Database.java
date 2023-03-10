@@ -182,6 +182,7 @@ public class Database implements Sorting {
     
     public void sort(int limit) throws IOException {
         try {
+        	// Temporarily used for the merge process.
             RandomAccessFile[] files = new RandomAccessFile[4];
             
             for (int i = 0; i < 4; i++)
@@ -189,32 +190,57 @@ public class Database implements Sorting {
             
             raf.seek(Integer.BYTES);
             
-            // Initial distribution.
+            // Sorting and initial distribution.
             while (!eof(raf)) {
-                sort(files[0], limit);
-                sort(files[1], limit);
+                distribute(files[0], limit);
+                distribute(files[1], limit);
             }
             
-            int runs = getTotalRuns(limit);
+            files[0].seek(0);
+            while(!eof(files[0]))
+            	System.out.println(Record.deserialize(files[0]).toString());
+            
+            System.out.println("\n\n");
+            
+            files[1].seek(0);
+            while(!eof(files[1]))
+            	System.out.println(Record.deserialize(files[1]).toString());
+            
             boolean control = true;
             
-            for (int i = limit; runs >= 0; runs--, i *= 2, control = !control) {
-                 if (control)
-                	 intercalate(files[0], files[1], files[2], files[3], i);
-                 else
-                	 intercalate(files[3], files[2], files[1], files[0], i);
-            }
+//            int runs = getTotalRuns(limit);
+//            for (int i = limit; runs >= 0; runs--, i *= 2, control = !control) {
+//                 if (control)
+//                	 intercalate(files[0], files[1], files[2], files[3], i);
+//                 else
+//                	 intercalate(files[3], files[2], files[1], files[0], i);
+//            }
             
-//            files[3].seek(0);
-//            while (!eof(files[3]))
-//            	System.out.println(Record.deserialize(files[3]).toString());
+            for (int i = limit; !oneDestination(files); i *= 2, control = !control) {
+                if (control)
+                	intercalateTest(files[0], files[1], files[2], files[3], i);
+                else
+               	 	intercalateTest(files[3], files[2], files[1], files[0], i);
+           }
+            
+            close(files);
             
         } catch (IOException e) {
             throw new IOException("Unable to sort", e);
         }
     }
     
-    private void sort(RandomAccessFile tmp, int limit) throws IOException {
+    private boolean oneDestination(RandomAccessFile[] files) throws IOException {
+    	int zeroLen = 0;
+    	
+    	for (int i = 0; i < files.length; i++)
+    		if (files[i].length() == 0)
+    			zeroLen++;
+    	
+    	return zeroLen == 3;
+    }
+    
+    private void distribute(RandomAccessFile tmp, int limit) throws IOException {
         try {
             Record[] records = new Record[limit];
             
@@ -249,79 +275,192 @@ public class Database implements Sorting {
         RandomAccessFile third,
         RandomAccessFile fourth,
         int limit	
-    ) {
-        try {
-            // Used to switch between destination files.
-            boolean destControl = false;
-            first.seek(0);
-            second.seek(0);
+    ) throws IOException {
+    	
+        // Used to switch between destination files.
+        boolean destControl = false;
+        first.seek(0);
+        second.seek(0);
+        
+        // Deals with all the intervals except the last one.
+        while (!eof(first) && !eof(second)) {
+        	int firstCounter = 0;
+        	int secondCounter = 0;
             
-            // Deals with all the intervals except the last one.
-            while (!eof(first) && !eof(second)) {
-            	int firstCounter = 0;
-            	int secondCounter = 0;
+            while (firstCounter < limit && secondCounter < limit) {
+                /*
+                 * Position to return to when a record has a higher id
+                 * than the other, so new comparisons can happen.
+                 */
+                long firstPos = first.getFilePointer();
+                long secondPos = second.getFilePointer();
                 
-                while (firstCounter < limit && secondCounter < limit) {
-                    /*
-                     * While analyzing record by record, EOF may get
-                     * reached before the outer loop condition.
-                     */
-                    if (eof(first) || eof(second))
-                        break;
+                // Loaded for attribute comparison.
+                Record fromFirst = Record.deserialize(first);
+                Record fromSecond = Record.deserialize(second);
+                
+                if (fromFirst.getId() < fromSecond.getId()) {
+                    fromFirst.serialize((destControl) ? fourth : third);
+                    second.seek(secondPos);
+                    firstCounter++;
                     
-                    /*
-                     * Position to return to when a record has a higher id
-                     * than the other, so new comparisons can happen.
-                     */
-                    long firstPos = first.getFilePointer();
-                    long secondPos = second.getFilePointer();
-                    
-                    // Loaded for attribute comparison.
-                    Record fromFirst = Record.deserialize(first);
-                    Record fromSecond = Record.deserialize(second);
-                    
-                    if (fromFirst.getId() < fromSecond.getId()) {
-                        fromFirst.serialize((destControl) ? fourth : third);
-                        second.seek(secondPos);
-                        firstCounter++;
-                        
-                    } else {
-                        fromSecond.serialize((destControl) ? fourth : third);
-                        first.seek(firstPos);
-                        secondCounter++;
-                    }
+                } else {
+                    fromSecond.serialize((destControl) ? fourth : third);
+                    first.seek(firstPos);
+                    secondCounter++;
                 }
-                
-            	while (!eof(first) && firstCounter < limit) {
-            		Record.deserialize(first).serialize((destControl) ? fourth : third);
-            		firstCounter++;
-            	}
-                
-            	while(!eof(second) && secondCounter < limit) {
-            		Record.deserialize(second).serialize((destControl) ? fourth : third);
-	        		secondCounter++;
-            	}
-                
-                destControl = !destControl;
             }
             
-        	while (!eof(second)) {
-        		Record record = Record.deserialize(second);
-        		record.serialize(fourth);
-        	}
-            	
-        	while (!eof(first)) {
-        		Record record = Record.deserialize(first);
-        		record.serialize(fourth);
+        	while (!eof(first) && firstCounter < limit) {
+        		Record.deserialize(first).serialize((destControl) ? fourth : third);
+        		firstCounter++;
         	}
             
-            first.setLength(0);
-            second.setLength(0);
+        	while(!eof(second) && secondCounter < limit) {
+        		Record.deserialize(second).serialize((destControl) ? fourth : third);
+        		secondCounter++;
+        	}
             
-        } catch (IOException e) {
-            System.err.println("Error while intercalating");
-            e.printStackTrace();
+            destControl = !destControl;
         }
+        
+    	while (!eof(second))
+    		Record.deserialize(second).serialize(fourth);
+        	
+    	while (!eof(first))
+    		Record.deserialize(first).serialize(fourth);
+        
+    	/*
+    	 * Once the two files have been merged, they must be
+    	 * reinitialized for the next run.
+    	 */
+        first.setLength(0);
+        second.setLength(0);
+    }
+    
+    private void intercalateTest
+    (
+        RandomAccessFile first,
+        RandomAccessFile second,
+        RandomAccessFile third,
+        RandomAccessFile fourth,
+        int limit	
+    ) throws IOException {
+    	
+        // Used to switch between destination files.
+        boolean destControl = false;
+        first.seek(0);
+        second.seek(0);
+        
+        // Deals with all the intervals except the last one.
+        while (!eof(first) && !eof(second)) {
+        	int firstCounter = 0;
+        	int secondCounter = 0;
+            
+        	int firstLimit = getLimit(first, limit, first.getFilePointer());
+        	int secondLimit = getLimit(second, limit, second.getFilePointer());
+        	
+        	System.out.println(firstLimit + " " + secondLimit);
+        	
+            while (firstCounter < firstLimit && secondCounter < secondLimit) {
+            	System.out.println("firstCounter: " + firstCounter);
+            	System.out.println("secondCounter: " + secondCounter);
+                /*
+                 * Position to return to when a record has a higher id
+                 * than the other, so new comparisons can happen.
+                 */
+                long firstPos = first.getFilePointer();
+                long secondPos = second.getFilePointer();
+                
+                // Loaded for attribute comparison.
+                Record fromFirst = Record.deserialize(first);
+                Record fromSecond = Record.deserialize(second);
+                
+                if (fromFirst.getId() < fromSecond.getId()) {
+                    fromFirst.serialize((destControl) ? fourth : third);
+                    second.seek(secondPos);
+                    firstCounter++;
+                    
+                } else {
+                    fromSecond.serialize((destControl) ? fourth : third);
+                    first.seek(firstPos);
+                    secondCounter++;
+                }
+            }
+            
+        	while (!eof(first) && firstCounter < firstLimit) {
+        		Record.deserialize(first).serialize((destControl) ? fourth : third);
+        		firstCounter++;
+        	}
+            
+        	while(!eof(second) && secondCounter < secondLimit) {
+        		Record.deserialize(second).serialize((destControl) ? fourth : third);
+        		secondCounter++;
+        	}
+            
+            destControl = !destControl;
+        }
+        
+    	while (!eof(second))
+    		Record.deserialize(second).serialize(fourth);
+        	
+    	while (!eof(first))
+    		Record.deserialize(first).serialize(fourth);
+        
+    	/*
+    	 * Once the two files have been merged, they must be
+    	 * reinitialized for the next run.
+    	 */
+        first.setLength(0);
+        second.setLength(0);
+    }
+    
+    private void close(RandomAccessFile[] files) throws IOException {
+    	for (int i = 0; i < files.length; i++) {
+    		if (files[i].length() == 0) {
+    			files[i].close();
+    			
+    		} else {
+    			raf.seek(Integer.BYTES);
+    			
+    			while (!eof(files[i]))
+    				Record.deserialize(files[i]).serialize(raf);
+    		}
+    	}
+    }
+    
+    private int getTotalRuns(int limit) {
+    	return (int)Math.ceil(Math.log(totalRecords/limit)/Math.log(2));
+    }
+    
+    private int getLimit(RandomAccessFile raf, int limit, long pos)
+    	throws IOException {
+    	
+    	int newLimit = limit;
+    	Record tmp = null;
+    	
+    	while (!eof(raf)) {
+    		for (int i = 0; i < limit; i++) {
+    			if (eof(raf))
+    				break;
+    			
+    			tmp = Record.deserialize(raf);
+    		}
+    		
+    		if (eof(raf))
+    			break;
+    		
+    		Record next = Record.deserialize(raf);
+    		
+    		if (tmp.getId() < next.getId())
+    			newLimit *= 2;
+    		
+    		else break;
+    	}
+    	
+    	raf.seek(pos);
+    	
+    	return newLimit;
     }
     
     // Returns the file's first four bytes.
@@ -337,10 +476,6 @@ public class Database implements Sorting {
         }
     }
     
-    private int getTotalRuns(int limit) {
-    	return (int)Math.ceil(Math.log(totalRecords/limit)/Math.log(2));
-    }
-
     /*
      * Returns whether there's still an offset between
      * the file pointer and the file's length.
