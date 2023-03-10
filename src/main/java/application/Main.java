@@ -14,7 +14,7 @@ public class Main {
         try {
             Database db = new Database(file);
             
-            db.sort(1000);
+            db.sort(100);
             
         } catch (IOException e) {
             System.err.println(e.getLocalizedMessage());

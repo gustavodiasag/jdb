@@ -18,8 +18,9 @@ public class CSVParser {
      * There's no reason for the source file to be provided
      * by the user.
      */
-    private static final String csvPath = "src/main/resources/data.csv";
- 
+//    private static final String csvPath = "src/main/resources/data.csv";
+	private static final String csvPath = "src/test/resources/test.csv";
+    
     public static Record[] parse() {
         try {
             List<String> lines = Files
@@ -45,7 +46,7 @@ public class CSVParser {
         
         return null;
     }
-
+   
     // Returns the object generated from a raw file line.
     public static Record buildFrom(String line) throws ParseException {
         /*
