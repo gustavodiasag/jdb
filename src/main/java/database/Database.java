@@ -21,7 +21,7 @@ public class Database implements Sorting {
         this.raf = new RandomAccessFile(file, "rw");
         this.initialize();
     }
-    
+
     private void initialize() throws IOException {
         try {
             Record[] records = CSVParser.parse();
@@ -32,13 +32,13 @@ public class Database implements Sorting {
              */
             int lastId = records[records.length - 1].getId();
             raf.writeInt(lastId);
-            
+
             for (Record record : records)
                 record.serialize(raf);
-            
+
         } catch (IOException e) {
             throw new IOException(
-                "Error while initializing the database", e);
+                    "Error while initializing the database", e);
         }
     }
 
@@ -50,36 +50,36 @@ public class Database implements Sorting {
         try {
             // Header is not useful for this operation.
             raf.seek(Integer.BYTES);
-            
+
             while (!eof(raf)) {
                 long pos = raf.getFilePointer();
                 boolean valid = raf.readBoolean();
                 int recordSize = raf.readInt();
-                
+
                 if (valid) {
                     raf.seek(pos);
                     Record r = Record.deserialize(raf);
-                    
+
                     if (r.getId() == id)
                         return r;
                 } else
                     // Deleted records must not be read.
                     raf.skipBytes(recordSize);
             }
-            
+
         } catch (IOException e) {
             throw new IOException(
-                "Error while retrieving record with id: " + id, e);
+                    "Error while retrieving record with id: " + id, e);
         }
-        
+
         return null;
     }
-    
+
     /*
      * Returns true if a new entity is successfully inserted
      * into the database and false otherwise.
      */
-    public boolean insert(Record record) throws IOException {            
+    public boolean insert(Record record) throws IOException {
         try {
             record.setId(getLastId() + 1);
             raf.seek(0);
@@ -90,15 +90,15 @@ public class Database implements Sorting {
             record.serialize(raf);
 
             return true;
-            
+
         } catch (IOException e) {
             System.err.println(
-                "Unable to insert record record:\n" + record.toString());
+                    "Unable to insert record record:\n" + record.toString());
         }
-        
+
         return false;
     }
-    
+
     /*
      * Returns true if it was successfully able to update
      * such record and false otherwise.
@@ -106,16 +106,16 @@ public class Database implements Sorting {
     public boolean update(Record record) throws IOException {
         try {
             raf.seek(Integer.BYTES);
-            
+
             while (!eof(raf)) {
                 long pos = raf.getFilePointer();
                 boolean valid = raf.readBoolean();
                 int recordSize = raf.readInt();
-                
+
                 if (valid) {
                     raf.seek(pos);
                     Record r = Record.deserialize(raf);
-                    
+
                     if (record.getId() == r.getId()) {
                         byte[] recordAsBytes = record.toByteArray();
                         raf.seek(pos);
@@ -137,7 +137,7 @@ public class Database implements Sorting {
             }
         } catch (IOException e) {
             throw new IOException(
-                "Error while updating record with id: " + record.getId(), e);
+                    "Error while updating record with id: " + record.getId(), e);
         }
 
         return false;
@@ -168,30 +168,30 @@ public class Database implements Sorting {
 
                         return true;
                     }
-                    
+
                 } else
                     // Deleted records must not be read.
                     raf.skipBytes(recordSize);
             }
         } catch (IOException e) {
             System.err.println(
-                "Error while deleting record with id: " + id);
+                    "Error while deleting record with id: " + id);
         }
 
         return false;
     }
-    
+
     public void sort(int limit, boolean optimize) throws IOException {
         try {
             // Temporarily used for the merging process.
             RandomAccessFile[] files = new RandomAccessFile[4];
-            
+
             for (int i = 0; i < 4; i++)
                 files[i] = new RandomAccessFile("tmp" + i, "rw");
 
             // Header remains the same.
             raf.seek(Integer.BYTES);
-            
+
             // Initial distribution.
             while (!eof(raf)) {
                 distribute(files[0], limit);
@@ -199,16 +199,16 @@ public class Database implements Sorting {
             }
             // Used to alternate the source and destination files.
             boolean control = true;
-            
+
             for (int i = limit; !singleDest(files); i *= 2, control = !control) {
                 if (control)
                     merge(i, optimize, files[0], files[1], files[2], files[3]);
                 else
-                        merge(i, optimize, files[3], files[2], files[1], files[0]);
+                    merge(i, optimize, files[3], files[2], files[1], files[0]);
             }
-            
+
             close(files);
-            
+
         } catch (IOException e) {
             throw new IOException("Unable to sort", e);
         }
@@ -219,22 +219,22 @@ public class Database implements Sorting {
      * file, sorts and writes them into the specified destination.
      */
     private void distribute(RandomAccessFile file, int limit)
-        throws IOException {
+            throws IOException {
 
         try {
             Record[] records = new Record[limit];
-            
+
             int i = 0;
-            // Prioritizes end-of-file considering the last iteration. 
+            // Prioritizes end-of-file considering the last iteration.
             for (; !eof(raf) && i < limit; i++)
                 records[i] = Record.deserialize(raf);
 
             /*
-            * Limiting the array like this guarantees that the sorting
-            * operation will only consider existing objects (non null).
-            */
-            quickSort(records, 0, i-1);
-            
+             * Limiting the array like this guarantees that the sorting
+             * operation will only consider existing objects (non null).
+             */
+            quickSort(records, 0, i - 1);
+
             for (int j = 0; j < i; j++)
                 records[j].serialize(file);
 
@@ -242,29 +242,28 @@ public class Database implements Sorting {
             throw new IOException("Error while sorting", e);
         }
     }
-    
+
     /*
      * Merges the already sorted records from the first two files
      * to the last ones considering the established limit.
      */
-    private void merge
-    (
-        int limit,
-        boolean optimize,
-        RandomAccessFile first,
-        RandomAccessFile second,
-        RandomAccessFile third,
-        RandomAccessFile fourth
-        
+    private void merge(
+            int limit,
+            boolean optimize,
+            RandomAccessFile first,
+            RandomAccessFile second,
+            RandomAccessFile third,
+            RandomAccessFile fourth
+
     ) throws IOException {
         // Used to switch between destination files.
         boolean destControl = false;
         first.seek(0);
         second.seek(0);
-        
+
         int firstLimit = limit;
         int secondLimit = limit;
-        
+
         // Deals with all the intervals except the last one.
         while (!eof(first) && !eof(second)) {
             int firstCounter = 0;
@@ -274,7 +273,7 @@ public class Database implements Sorting {
                 firstLimit = getLimit(first, limit);
                 secondLimit = getLimit(second, limit);
             }
-            
+
             while (firstCounter < firstLimit && secondCounter < secondLimit) {
                 /*
                  * While reading record by record, EOF may get reached
@@ -282,22 +281,22 @@ public class Database implements Sorting {
                  */
                 if (eof(first) || eof(second))
                     break;
-                /* 
+                /*
                  * Position to return to when a record has a higher id
                  * than the other, so new comparisons can happen.
                  */
                 long firstPos = first.getFilePointer();
                 long secondPos = second.getFilePointer();
-                
+
                 // Loaded for attribute comparison.
                 Record fromFirst = Record.deserialize(first);
                 Record fromSecond = Record.deserialize(second);
-                
+
                 if (fromFirst.getId() < fromSecond.getId()) {
                     fromFirst.serialize((destControl) ? fourth : third);
                     second.seek(secondPos);
                     firstCounter++;
-                    
+
                 } else {
                     fromSecond.serialize((destControl) ? fourth : third);
                     first.seek(firstPos);
@@ -309,18 +308,18 @@ public class Database implements Sorting {
                 Record.deserialize(first).serialize((destControl) ? fourth : third);
                 firstCounter++;
             }
-            
-            while(!eof(second) && secondCounter < secondLimit) {
+
+            while (!eof(second) && secondCounter < secondLimit) {
                 Record.deserialize(second).serialize((destControl) ? fourth : third);
                 secondCounter++;
             }
-            
+
             destControl = !destControl;
         }
-        
+
         while (!eof(first))
             fourth.write(first.read());
-        
+
         while (!eof(second))
             fourth.write(second.read());
 
@@ -331,7 +330,7 @@ public class Database implements Sorting {
         first.setLength(0);
         second.setLength(0);
     }
-    
+
     /*
      * Checks if the last element from a group and the first
      * from the next one are in ascending order, which
@@ -339,27 +338,27 @@ public class Database implements Sorting {
      * amount of runs necessary to sort the database.
      */
     private int getLimit(RandomAccessFile file, int limit)
-        throws IOException {
-        
+            throws IOException {
+
         long pos = file.getFilePointer();
         int newLimit = limit;
-        
+
         while (true) {
             for (int i = 0; !eof(file) && i < limit - 1; i++) {
                 // Ignores all records besides the last on the block.
                 file.skipBytes(1);
                 file.skipBytes(file.readInt());
             }
-            
+
             if (eof(file))
                 break;
 
             Record prev = Record.deserialize(file);
             Record next = Record.deserialize(file);
-            
+
             if (prev.getId() > next.getId())
                 return newLimit;
-            
+
             newLimit += limit;
         }
         /*
@@ -367,24 +366,24 @@ public class Database implements Sorting {
          * must return to execute the merging process.
          */
         file.seek(pos);
-            
+
         return newLimit;
     }
-    
+
     /*
      * Checks if only one file contains data, which is the
      * condition for the merging operation to end.
      */
     private boolean singleDest(RandomAccessFile[] files) throws IOException {
         int zeroLen = 0;
-        
+
         for (int i = 0; i < files.length; i++)
             if (files[i].length() == 0)
                 zeroLen++;
-        
+
         return zeroLen == files.length - 1;
     }
-    
+
     // Deletes all the temporary files.
     private void close(RandomAccessFile[] files) throws IOException {
         for (int i = 0; i < files.length; i++) {
@@ -394,6 +393,7 @@ public class Database implements Sorting {
                 while (!eof(files[i]))
                     raf.write(files[i].read());
             }
+            files[i].close();
         }
 
         Files.delete(Paths.get("tmp0"));
@@ -401,26 +401,26 @@ public class Database implements Sorting {
         Files.delete(Paths.get("tmp2"));
         Files.delete(Paths.get("tmp3"));
     }
-    
+
     // Returns the database file's first four bytes.
     private int getLastId() throws IOException {
         try {
             raf.seek(0);
-            
+
             return raf.readInt();
-            
+
         } catch (IOException e) {
             throw new IOException(
-                "Unable to retrieve file header", e);
+                    "Unable to retrieve file header", e);
         }
     }
-    
+
     public void show() throws IOException {
         raf.seek(Integer.BYTES);
-        
+
         while (!eof(raf))
             System.out.println(Record.deserialize(raf));
-        
+
         raf.seek(0);
     }
 
@@ -434,7 +434,7 @@ public class Database implements Sorting {
 
         } catch (IOException e) {
             throw new IOException(
-                "Error while checking for EOF", e);
+                    "Error while checking for EOF", e);
         }
     }
 }
