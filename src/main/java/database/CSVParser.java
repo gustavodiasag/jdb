@@ -18,8 +18,7 @@ public class CSVParser {
      * There's no reason for the source file to be provided
      * by the user.
      */
-//    private static final String csvPath = "src/main/resources/data.csv";
-	private static final String csvPath = "src/test/resources/test.csv";
+   private static final String csvPath = "src/main/resources/data.csv";
     
     public static Record[] parse() {
         try {
@@ -55,6 +54,9 @@ public class CSVParser {
          */
         String[] fields = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
         
+        if (fields.length == 6)
+        	return buildFromInput(fields);
+        
         // At this moment, all records generated are valid ones.
         boolean valid = true;
         
@@ -82,6 +84,38 @@ public class CSVParser {
         return new Record(
             valid,
             id,
+            name,
+            score,
+            genres,
+            episodes,
+            producers,
+            date
+        );
+    }
+    
+    private static Record buildFromInput(String[] fields)
+    	throws ParseException {
+    	
+    	boolean valid = true;
+        
+        String name = fields[0].replace("\"", "");
+        float score = toNumber(fields[1]);
+        
+        String[] genres = fields[2]
+            .replace("\"", "")
+            .split(",");
+
+        int episodes = (int)toNumber(fields[3]);
+
+        String[] producers = fields[4]
+            .replace("\"", "")
+            .split(",");
+
+        Date date = toDate(fields[5]);
+
+        return new Record(
+            valid,
+            0,
             name,
             score,
             genres,
