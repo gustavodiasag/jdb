@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ $# != 1 ]; then
-	echo "Usage: sh $0 <binary-filename>"
+if [ $# != 0 ]; then
+	echo "Usage: sh $0"
 	exit 1
 fi
 
@@ -11,6 +11,4 @@ dir=./bin
 # jar file name
 jar=project.jar
 
-java -jar $dir/$jar $1
-
-rm tmp*
+java -jar $dir/$jar
