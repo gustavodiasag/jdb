@@ -1,8 +1,8 @@
 #!/bin/sh
 
 if [ $# != 0 ]; then
-	echo "Usage: sh $0"
-	exit 1
+    echo "Usage: sh $0"
+    exit 1
 fi
 
 # Directory where the jar file is located

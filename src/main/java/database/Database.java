@@ -183,7 +183,7 @@ public class Database implements Sorting {
     
     public void sort(int limit, boolean optimize) throws IOException {
         try {
-        	// Temporarily used for the merging process.
+            // Temporarily used for the merging process.
             RandomAccessFile[] files = new RandomAccessFile[4];
             
             for (int i = 0; i < 4; i++)
@@ -202,9 +202,9 @@ public class Database implements Sorting {
             
             for (int i = limit; !singleDest(files); i *= 2, control = !control) {
                 if (control)
-                	merge(i, optimize, files[0], files[1], files[2], files[3]);
+                    merge(i, optimize, files[0], files[1], files[2], files[3]);
                 else
-               	 	merge(i, optimize, files[3], files[2], files[1], files[0]);
+                        merge(i, optimize, files[3], files[2], files[1], files[0]);
             }
             
             close(files);
@@ -249,8 +249,8 @@ public class Database implements Sorting {
      */
     private void merge
     (
-		int limit,
-		boolean optimize,
+        int limit,
+        boolean optimize,
         RandomAccessFile first,
         RandomAccessFile second,
         RandomAccessFile third,
@@ -267,21 +267,21 @@ public class Database implements Sorting {
         
         // Deals with all the intervals except the last one.
         while (!eof(first) && !eof(second)) {
-        	int firstCounter = 0;
-        	int secondCounter = 0;
+            int firstCounter = 0;
+            int secondCounter = 0;
             // The function can support both the "static" and "dynamic" merges.
-        	if (optimize) {
-        		firstLimit = getLimit(first, limit);
-        		secondLimit = getLimit(second, limit);
-        	}
-        	
+            if (optimize) {
+                firstLimit = getLimit(first, limit);
+                secondLimit = getLimit(second, limit);
+            }
+            
             while (firstCounter < firstLimit && secondCounter < secondLimit) {
-            	/*
-            	 * While reading record by record, EOF may get reached
-            	 * before the outer loop condition.
-            	 */
-            	if (eof(first) || eof(second))
-            		break;
+                /*
+                 * While reading record by record, EOF may get reached
+                 * before the outer loop condition.
+                 */
+                if (eof(first) || eof(second))
+                    break;
                 /* 
                  * Position to return to when a record has a higher id
                  * than the other, so new comparisons can happen.
@@ -305,29 +305,29 @@ public class Database implements Sorting {
                 }
             }
 
-        	while (!eof(first) && firstCounter < firstLimit) {
-        		Record.deserialize(first).serialize((destControl) ? fourth : third);
-        		firstCounter++;
-        	}
+            while (!eof(first) && firstCounter < firstLimit) {
+                Record.deserialize(first).serialize((destControl) ? fourth : third);
+                firstCounter++;
+            }
             
-        	while(!eof(second) && secondCounter < secondLimit) {
-        		Record.deserialize(second).serialize((destControl) ? fourth : third);
-        		secondCounter++;
-        	}
+            while(!eof(second) && secondCounter < secondLimit) {
+                Record.deserialize(second).serialize((destControl) ? fourth : third);
+                secondCounter++;
+            }
             
             destControl = !destControl;
         }
         
         while (!eof(first))
-        	fourth.write(first.read());
+            fourth.write(first.read());
         
-    	while (!eof(second))
-    		fourth.write(second.read());
+        while (!eof(second))
+            fourth.write(second.read());
 
-    	/*
-    	 * Once the two files have been merged, they must be
-    	 * reinitialized for the next run.
-    	 */
+        /*
+         * Once the two files have been merged, they must be
+         * reinitialized for the next run.
+         */
         first.setLength(0);
         second.setLength(0);
     }
@@ -340,35 +340,35 @@ public class Database implements Sorting {
      */
     private int getLimit(RandomAccessFile file, int limit)
         throws IOException {
-    	
-    	long pos = file.getFilePointer();
-    	int newLimit = limit;
-    	
-    	while (true) {
-    		for (int i = 0; !eof(file) && i < limit - 1; i++) {
+        
+        long pos = file.getFilePointer();
+        int newLimit = limit;
+        
+        while (true) {
+            for (int i = 0; !eof(file) && i < limit - 1; i++) {
                 // Ignores all records besides the last on the block.
-    			file.skipBytes(1);
+                file.skipBytes(1);
                 file.skipBytes(file.readInt());
-    		}
-    		
-    		if (eof(file))
-    			break;
+            }
+            
+            if (eof(file))
+                break;
 
             Record prev = Record.deserialize(file);
-    		Record next = Record.deserialize(file);
-    		
-    		if (prev.getId() > next.getId())
-    			return newLimit;
-    		
-    		newLimit += limit;
-    	}
-    	/*
-    	 * After peeking plenty of records, the file pointer
-    	 * must return to execute the merging process.
-    	 */
-    	file.seek(pos);
-        	
-    	return newLimit;
+            Record next = Record.deserialize(file);
+            
+            if (prev.getId() > next.getId())
+                return newLimit;
+            
+            newLimit += limit;
+        }
+        /*
+         * After peeking plenty of records, the file pointer
+         * must return to execute the merging process.
+         */
+        file.seek(pos);
+            
+        return newLimit;
     }
     
     /*
@@ -376,18 +376,18 @@ public class Database implements Sorting {
      * condition for the merging operation to end.
      */
     private boolean singleDest(RandomAccessFile[] files) throws IOException {
-    	int zeroLen = 0;
-    	
-    	for (int i = 0; i < files.length; i++)
-    		if (files[i].length() == 0)
-    			zeroLen++;
-    	
-    	return zeroLen == files.length - 1;
+        int zeroLen = 0;
+        
+        for (int i = 0; i < files.length; i++)
+            if (files[i].length() == 0)
+                zeroLen++;
+        
+        return zeroLen == files.length - 1;
     }
     
     // Deletes all the temporary files.
     private void close(RandomAccessFile[] files) throws IOException {
-    	for (int i = 0; i < files.length; i++) {
+        for (int i = 0; i < files.length; i++) {
             if (files[i].length() > 0) {
                 raf.seek(Integer.BYTES);
 

@@ -5,6 +5,7 @@ public interface Sorting {
     default void quickSort(Record[] records, int left, int right ) {
         int i = left;
         int j = right;
+        
         Record pivot = records[(right + left)/2];
         
         while (i <= j) {

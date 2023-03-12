@@ -46,23 +46,23 @@ public class ByteManipulationTests {
             
             // Arrays cannot be directly compared.
             assertArrayEquals(
-            	new String[] {"Action", " Shounen", " Sports"},
-            	actual.getGenres()
+                new String[] {"Action", " Shounen", " Sports"},
+                actual.getGenres()
             );
             assertEquals(12, actual.getEpisodes());            
             assertArrayEquals(new String[] {"Unknown"}, actual.getProducers());
             
             assertEquals(
-            	new SimpleDateFormat("yyyy-MM-dd").parse("2023-02-17"),
-            	actual.getDate()
+                new SimpleDateFormat("yyyy-MM-dd").parse("2023-02-17"),
+                actual.getDate()
             );
             
         } catch (IOException e) {
             System.err.println(e.getMessage());
             
         } catch (ParseException e) {
-    		System.err.println(e.getMessage());
-    	}
+            System.err.println(e.getMessage());
+        }
     }
     
     
@@ -73,7 +73,7 @@ public class ByteManipulationTests {
             
             // Random record to be inserted
             Record record = CSVParser
-            	.buildFrom("23,foo,bar,\"baz, qux, quuz\",1,corge,2023-02-17");
+                .buildFrom("23,foo,bar,\"baz, qux, quuz\",1,corge,2023-02-17");
             
             assertEquals(true, db.insert(record));
             

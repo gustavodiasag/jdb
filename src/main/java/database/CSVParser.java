@@ -55,7 +55,7 @@ public class CSVParser {
         String[] fields = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
         
         if (fields.length == 6)
-        	return buildFromInput(fields);
+            return buildFromInput(fields);
         
         // At this moment, all records generated are valid ones.
         boolean valid = true;
@@ -94,9 +94,9 @@ public class CSVParser {
     }
     
     private static Record buildFromInput(String[] fields)
-    	throws ParseException {
-    	
-    	boolean valid = true;
+        throws ParseException {
+        
+        boolean valid = true;
         
         String name = fields[0].replace("\"", "");
         float score = toNumber(fields[1]);
