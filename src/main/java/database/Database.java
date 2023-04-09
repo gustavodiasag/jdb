@@ -17,14 +17,14 @@ public class Database implements Sorting {
      */
     private final RandomAccessFile raf;
 
-    public Database(File file) throws IOException {
+    public Database(File file, int version) throws IOException {
         this.raf = new RandomAccessFile(file, "rw");
-        this.initialize();
+        this.initialize(version);
     }
 
-    private void initialize() throws IOException {
+    private void initialize(int version) throws IOException {
         try {
-            Record[] records = CSVParser.parse();
+            Record[] records = CSVParser.parse(version);
             /*
              * Storing the highest id value before the records is clever
              * for this attribute should not be user-defined and new

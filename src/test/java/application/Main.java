@@ -1,4 +1,4 @@
-package main.java.application;
+package test.java.application;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,11 +15,13 @@ public class Main {
         File file = new File("db.bin");
         
         try {
-            Database db = new Database(file, 1);
+            Database db = new Database(file, 2);
             
             System.out.println("\nDatabase successfully initialized.");
             
-            prompt(db);
+            Hash hash = new Hash(file, 2);
+            
+            //prompt(db);
 
         } catch (IOException e) {
             System.err.println(e.getLocalizedMessage());
