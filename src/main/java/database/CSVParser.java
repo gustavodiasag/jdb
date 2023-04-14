@@ -18,13 +18,15 @@ public class CSVParser {
      * There's no reason for the source file to be provided
      * by the user.
      */
-   private static final String csvPath = "src/main/resources/data.csv";
+   private static final String csvPathRelease = "src/main/resources/data.csv";
+   private static final String csvPathTest = "src/test/resources/test.csv";
     
-    public static Record[] parse() {
+    public static Record[] parse(int version) {
+        
         try {
             List<String> lines = Files
                 .readAllLines(
-                    Paths.get(csvPath),
+                    Paths.get((version == 2) ? csvPathTest : csvPathRelease),
                     Charset.forName("UTF-8"));
             
             Record[] records = new Record[lines.size()];

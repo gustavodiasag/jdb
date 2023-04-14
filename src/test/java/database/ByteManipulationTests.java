@@ -22,7 +22,7 @@ public class ByteManipulationTests {
     @Test
     public void testDeletion() {
         try {
-            Database db = new Database(new File(binPath));
+            Database db = new Database(new File(binPath), 2);
             
             assertEquals(true, db.delete(15));
             
@@ -34,7 +34,7 @@ public class ByteManipulationTests {
     @Test
     public void testSelection() {
         try {
-            Database db = new Database(new File(binPath));
+            Database db = new Database(new File(binPath), 2);
             
             // To be validated with the expected values.
             Record actual = db.get(23);
@@ -69,7 +69,7 @@ public class ByteManipulationTests {
     @Test 
     public void testInsertion() {
         try {
-            Database db = new Database(new File(binPath));
+            Database db = new Database(new File(binPath), 2);
             
             // Random record to be inserted
             Record record = CSVParser

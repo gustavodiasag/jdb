@@ -15,7 +15,7 @@ public class Main {
         File file = new File("db.bin");
         
         try {
-            Database db = new Database(file);
+            Database db = new Database(file, 1);
             
             System.out.println("\nDatabase successfully initialized.");
             
