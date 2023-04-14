@@ -1,7 +1,5 @@
 package main.java.database;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -16,7 +14,7 @@ public class Bucket {
     this.depth = depth;
 
     for (int i = 0; i < size; i++) {
-      nodes[i] = new BucketNode(-1, -1);
+      nodes[i] = new BucketNode(Integer.MAX_VALUE, Long.MAX_VALUE);
     }
 
   }
@@ -57,17 +55,36 @@ public class Bucket {
 
   public void setNodes(BucketNode[] nodes) {
     this.nodes = nodes;
+    this.ele = (byte) nodes.length;
   }
 
-  public BucketNode getNodes(int pos) {
+  public BucketNode getNode(int pos) {
     return nodes[pos];
   }
 
-  public void setNodes(BucketNode node, int pos) {
+  public void setNode(BucketNode node, int pos) {
     this.nodes[pos] = node;
+    this.ele += 1;
   }
 
-  public BucketNode[] sort(BucketNode[] nos) {
+  public void setNode(BucketNode node) {
+    this.nodes[ele] = node;
+    this.ele += 1;
+  }
+
+  public void sort() {
+    for (int i = 0; i < (nodes.length - 1); i++) {
+      int menor = i;
+      for(int j = (i + 1); j < nodes.length; j++) {
+        if(nodes[menor].key > nodes[j].key) {
+          menor = j;
+        }
+      }
+      swap(menor, i, nodes);
+    }
+  }
+
+  public void sort(BucketNode[] nos) {
     for (int i = 0; i < (nos.length - 1); i++) {
       int menor = i;
       for(int j = (i + 1); j < nos.length; j++) {
@@ -77,10 +94,9 @@ public class Bucket {
       }
       swap(menor, i, nos);
     }
-    return nos;
   }
 
-  public void swap(int i, int j, BucketNode[] nos) {
+  public static void swap(int i, int j, BucketNode[] nos) {
     BucketNode no = new BucketNode(nos[i].key, nos[i].pointer);
     nos[i].key = nos[j].key;
     nos[i].pointer = nos[j].pointer;
@@ -89,28 +105,11 @@ public class Bucket {
  }
 
   public void serialize(RandomAccessFile raf) throws IOException {
-    byte[] recordAsBytes = this.toByteArray();
-    raf.write(recordAsBytes);
-  }
-
-  public byte[] toByteArray() throws IOException {
-    // Byte stream is closed even when an exception is thrown.
-    try (ByteArrayOutputStream byteStream = new ByteArrayOutputStream()) {
-      DataOutputStream stream = new DataOutputStream(byteStream);
-
-      stream.writeByte(ele);
-      stream.writeShort(depth);
-
-      for (int i = 0; i < size; i++) {
-        stream.writeInt(nodes[i].key);
-        stream.writeLong(nodes[i].pointer);
-      }
-
-      return byteStream.toByteArray();
-
-    } catch (IOException e) {
-      throw new IOException(
-          "Could not transfer data to byte file", e);
+    raf.writeByte(ele);
+    raf.writeShort(depth);
+    for (int i = 0; i < size; i++) {
+      raf.writeInt(nodes[i].key);
+      raf.writeLong(nodes[i].pointer);
     }
   }
 
@@ -122,8 +121,7 @@ public class Bucket {
       BucketNode[] nodes = new BucketNode[size];
 
       for(int i = 0; i < size; i++) {
-        nodes[i].key = raf.readInt();
-        nodes[i].pointer = raf.readLong();
+        nodes[i] = new BucketNode(raf.readInt(), raf.readLong());        
       }
 
       return new Bucket(ele, depth, nodes);
@@ -131,7 +129,15 @@ public class Bucket {
 
     } catch (IOException e) {
       throw new IOException(
-          "Error while reading data from file", e);
+          "Error while reading bucket from file", e);
+    }
+  }
+
+  public void print() {
+    System.out.println("Elementos = " + getEle());
+    System.out.println("Profundidade = " + getDepth());
+    for(BucketNode node : nodes) {
+      System.out.println("Chave: " + node.key + " - ponteiro: " + node.pointer);
     }
   }
 
