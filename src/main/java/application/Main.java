@@ -17,7 +17,7 @@ public class Main {
         try {
             Database db = new Database(file);
             
-            System.out.println("\nDatabase successfully initialized.");
+            db.build();
             
             prompt(db);
 

@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
+
+import main.java.structures.btree.BTree;
+import main.java.structures.index.InvertedIndex;
 
 /*
  * Responsible for managing all operations and
@@ -16,13 +20,16 @@ public class Database implements Sorting {
      * in the file specified.
      */
     private final RandomAccessFile raf;
+    private final InvertedIndex index;
+    private final BTree tree;
 
     public Database(File file) throws IOException {
         this.raf = new RandomAccessFile(file, "rw");
-        this.initialize();
+        this.tree = new BTree(8);
+        this.index = new InvertedIndex();
     }
     
-    private void initialize() throws IOException {
+    public void build() throws IOException {
         try {
             Record[] records = CSVParser.parse();
             /*
@@ -33,15 +40,42 @@ public class Database implements Sorting {
             int lastId = records[records.length - 1].getId();
             raf.writeInt(lastId);
             
-            for (Record record : records)
-                record.serialize(raf);
+            tree.build();
+            
+            for (Record record : records) {
+                long pos = record.serialize(raf);
+                
+                index.insert(record, pos);
+                tree.insert(record, pos);
+            }
+            
+            tree.show();
             
         } catch (IOException e) {
-            throw new IOException(
-                "Error while initializing the database", e);
+            throw new IOException("Error while initializing the database", e);
         }
     }
-
+    
+    public void get(String genre) throws IOException {
+        List<Long> recordPtrs = index.get(genre);
+        
+        for (long recordPtr : recordPtrs) {
+            raf.seek(recordPtr);
+            Record record = Record.deserialize(raf);
+            System.out.println(record.toString());
+        }
+    }
+    
+    public void get(String genre, String producer) throws IOException {
+        List<Long> recordPtrs = index.get(genre, producer);
+        
+        for (long recordPtr : recordPtrs) {
+            raf.seek(recordPtr);
+            Record record = Record.deserialize(raf);
+            System.out.println(record.toString());
+        }
+    }
+    
     /*
      * Returns the entity with the corresponding id
      * and null if it isn't found in the database.

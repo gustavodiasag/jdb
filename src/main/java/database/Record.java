@@ -116,9 +116,9 @@ public class Record {
      * Writes the object's structured representation to the
      * "database" file.
      */
-    public void serialize(RandomAccessFile raf) throws IOException {
+    public long serialize(RandomAccessFile raf) throws IOException {
+        long pos = raf.getFilePointer();
         byte[] recordAsBytes = this.toByteArray();
-
         /*
          * The bytes corresponding to the record are not directly written
          * 'cause each one is preceded by some kind of header:
@@ -135,6 +135,8 @@ public class Record {
          */
         raf.writeInt(recordAsBytes.length);
         raf.write(recordAsBytes);
+        
+        return pos;
     }
 
     // Used for updates that maintain the previous register's size.

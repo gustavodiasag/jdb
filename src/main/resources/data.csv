@@ -67,10 +67,10 @@
 87,Mobile Suit Gundam: Char's Counterattack,7.68,"Military, Sci-Fi, Space, Drama, Mecha",1,"Sotsu, Nozomi Entertainment, Atelier Musa",2023-02-17
 88,Mobile Suit Gundam F91,6.67,"Drama, Mecha, Military, Sci-Fi, Space",1,"Sotsu, Shochiku, Atelier Musa, Nagoya Broadcasting Network",2023-02-17
 89,Mobile Suit Victory Gundam,6.76,"Drama, Mecha, Military, Sci-Fi, Space",51,"TV Asahi, Sotsu, Apollon",2023-02-17
+93,Mobile Suit Gundam SEED,7.79,"Action, Drama, Mecha, Military, Romance, Sci-Fi, Space",50,"Sotsu, Asatsu DK, Mainichi Broadcasting System, Sony Music Entertainment, Atelier Musa",2023-02-17
 90,Mobile Suit Gundam Wing,7.72,"Action, Military, Sci-Fi, Space, Drama, Mecha",49,TV Asahi,2023-02-17
 91,Mobile Suit Gundam Wing: Endless Waltz,7.76,"Action, Drama, Mecha, Military, Sci-Fi, Space",3,"Bandai Visual, Sotsu",2023-02-17
 92,After War Gundam X,7.32,"Sci-Fi, Adventure, Space, Drama, Mecha",39,"TV Asahi, Sotsu",2023-02-17
-93,Mobile Suit Gundam SEED,7.79,"Action, Drama, Mecha, Military, Romance, Sci-Fi, Space",50,"Sotsu, Asatsu DK, Mainichi Broadcasting System, Sony Music Entertainment, Atelier Musa",2023-02-17
 94,Mobile Suit Gundam SEED Destiny,7.22,"Action, Drama, Mecha, Military, Romance, Sci-Fi, Space",50,"Sotsu, Mainichi Broadcasting System, Sony Music Entertainment",2023-02-17
 95,Turn A Gundam,7.7,"Action, Military, Sci-Fi, Adventure, Space, Drama, Romance, Mecha",50,"Sotsu, Fuji TV",2023-02-17
 96,Mobile Fighter G Gundam,7.56,"Adventure, Comedy, Drama, Martial Arts, Mecha, Romance, Sci-Fi, Space, Sports",49,"TV Asahi, Sotsu",2023-02-17
@@ -107,6 +107,15 @@
 127,Gate Keepers,6.96,"Action, Sci-Fi, Comedy, Fantasy, Mecha, Shounen",24,Media Factory,2023-02-17
 128,Gate Keepers 21,6.79,"Action, Drama, Mecha, Sci-Fi, Shounen",6,Unknown,2023-02-17
 129,Gensoumaden Saiyuuki,7.59,"Action, Adventure, Comedy, Demons, Drama, Shounen, Supernatural",50,"TV Tokyo, Dentsu, Group TAC",2023-02-17
+217,Shin Angel,6.28,"Comedy, Drama, Hentai, Romance",5,"Pink Pineapple, Studio Tulip",2023-02-17
+218,Kidou Senkan Nadesico,7.52,"Action, Comedy, Mecha, Military, Parody, Romance, Sci-Fi, Shounen, Space",26,"Starchild Records, Yomiko Advertising, Audio Tanaka",2023-02-17
+219,Kidou Senkan Nadesico: The Prince of Darkness,6.77,"Action, Comedy, Drama, Mecha, Psychological, Sci-Fi, Shounen, Space",1,"TV Tokyo, Starchild Records, Kadokawa Shoten, Toei Video, Movic, Sega, King Records, Audio Tanaka",2023-02-17
+220,Kuro no Danshou,5.76,"Hentai, Horror",4,Discovery,2023-02-17
+221,Mezzo Forte,6.65,"Action, Comedy, Hentai, Sci-Fi",2,Green Bunny,2023-02-17
+222,Mezzo DSA,6.68,"Action, Adventure, Comedy, Mystery, Sci-Fi",13,"Studio Pierrot, Shochiku, Memory-Tech, Happinet Pictures",2023-02-17
+223,Dragon Ball,8.0,"Adventure, Comedy, Fantasy, Martial Arts, Shounen, Super Power",153,Fuji TV,2023-02-17
+225,Dragon Ball GT,6.48,"Action, Sci-Fi, Adventure, Comedy, Super Power, Magic, Fantasy, Shounen",64,Fuji TV,2023-02-17
+226,Elfen Lied,7.56,"Action, Horror, Psychological, Supernatural, Drama, Romance, Seinen",13,"VAP, Genco",2023-02-17
 130,Saiyuuki Reload,7.41,"Action, Adventure, Comedy, Demons, Drama, Josei, Supernatural",25,Unknown,2023-02-17
 131,Saiyuuki Reload Gunlock,7.42,"Action, Adventure, Comedy, Demons, Drama, Josei, Supernatural",26,Unknown,2023-02-17
 132,GetBackers,7.61,"Action, Comedy, Drama, Mystery, Shounen, Super Power, Supernatural",49,"TBS, Kodansha, Rondo Robe, Rakuonsha",2023-02-17
@@ -192,15 +201,6 @@
 214,Pia Carrot e Youkoso!! 2,6.15,"Comedy, Romance, Hentai",3,Pink Pineapple,2023-02-17
 215,Pia Carrot e Youkoso!! 2 DX,6.31,"Comedy, Romance",6,Unknown,2023-02-17
 216,Pia Carrot e Youkoso!!: Sayaka no Koi Monogatari,5.94,"Comedy, Romance",1,"Geneon Universal Entertainment, I-move",2023-02-17
-217,Shin Angel,6.28,"Comedy, Drama, Hentai, Romance",5,"Pink Pineapple, Studio Tulip",2023-02-17
-218,Kidou Senkan Nadesico,7.52,"Action, Comedy, Mecha, Military, Parody, Romance, Sci-Fi, Shounen, Space",26,"Starchild Records, Yomiko Advertising, Audio Tanaka",2023-02-17
-219,Kidou Senkan Nadesico: The Prince of Darkness,6.77,"Action, Comedy, Drama, Mecha, Psychological, Sci-Fi, Shounen, Space",1,"TV Tokyo, Starchild Records, Kadokawa Shoten, Toei Video, Movic, Sega, King Records, Audio Tanaka",2023-02-17
-220,Kuro no Danshou,5.76,"Hentai, Horror",4,Discovery,2023-02-17
-221,Mezzo Forte,6.65,"Action, Comedy, Hentai, Sci-Fi",2,Green Bunny,2023-02-17
-222,Mezzo DSA,6.68,"Action, Adventure, Comedy, Mystery, Sci-Fi",13,"Studio Pierrot, Shochiku, Memory-Tech, Happinet Pictures",2023-02-17
-223,Dragon Ball,8.0,"Adventure, Comedy, Fantasy, Martial Arts, Shounen, Super Power",153,Fuji TV,2023-02-17
-225,Dragon Ball GT,6.48,"Action, Sci-Fi, Adventure, Comedy, Super Power, Magic, Fantasy, Shounen",64,Fuji TV,2023-02-17
-226,Elfen Lied,7.56,"Action, Horror, Psychological, Supernatural, Drama, Romance, Seinen",13,"VAP, Genco",2023-02-17
 227,FLCL,8.03,"Action, Sci-Fi, Comedy, Parody, Dementia, Psychological, Mecha",6,"Starchild Records, GANSIS",2023-02-17
 228,Jigoku Shoujo,7.65,"Mystery, Horror, Psychological, Supernatural",26,"Aniplex, SKY Perfect Well Think",2023-02-17
 229,Ninin ga Shinobuden,6.92,"Comedy, Parody, Martial Arts",12,"Toshiba Entertainment, Happinet Pictures",2023-02-17
@@ -11406,6 +11406,81 @@
 32561,Hai to Gensou no Grimgar: Furoagari no Kabe ni Kaketa Seishun - One More Centimeter,6.61,Comedy,1,Unknown,2023-02-17
 32563,Starry Tales: Seiza wa Toki wo Koete,5.55,"Fantasy, Space",1,Unknown,2023-02-17
 32564,Tokiwa Kitareri!!,5.7,"Action, Magic, Shounen",1,Unknown,2023-02-17
+33248,K: Seven Stories Movie 1 - R:B - Blaze,7.37,"Action, Super Power, Supernatural, Drama",1,Unknown,2023-02-17
+33253,Ajin 2nd Season,7.68,"Action, Horror, Mystery, Seinen, Supernatural",13,"TOHO animation, King Records",2023-02-17
+33254,Arslan Senki (TV) Gaiden,7.01,"Adventure, Historical, Fantasy, Shounen",2,Unknown,2023-02-17
+33255,Saiki Kusuo no Ψ-nan,8.45,"Comedy, School, Shounen, Slice of Life, Supernatural",120,"TV Tokyo, Shogakukan-Shueisha Productions, Pony Canyon, Nippon Columbia, KlockWorx, Asmik Ace, Bandai Namco Entertainment, Shueisha, Toy's Factory, Dear Stage inc.",2023-02-17
+33258,Qin Shi Ming Yue: Guoqing Tebie Pian,Unknown,"Action, Comedy, Parody, Martial Arts",1,Unknown,2023-02-17
+33262,Chobitto Zukan,Unknown,"Fantasy, Kids",52,Unknown,2023-02-17
+33263,Kubikiri Cycle: Aoiro Savant to Zaregototsukai,7.82,"Action, Mystery, Supernatural, Drama",8,"Aniplex, Kodansha",2023-02-17
+33266,Nanocore,6.14,Sci-Fi,10,Coastline Animation Studio,2023-02-17
+33267,Jinxiu Shenzhou Zhi Qi You Ji,Unknown,"Adventure, Fantasy",Unknown,Unknown,2023-02-17
+33271,Nanocore 2nd Season,Unknown,"Action, Sci-Fi",10,Coastline Animation Studio,2023-02-17
+33272,Nanocore 2016 Xinnian Tebie Ban,5.57,Music,1,Coastline Animation Studio,2023-02-17
+33273,Bouningen Weekend,5.36,Slice of Life,20,Unknown,2023-02-17
+33274,Onara Gorou,5.51,Comedy,13,Unknown,2023-02-17
+33276,Konnichiwa Onara Gorou,4.54,Comedy,1,Unknown,2023-02-17
+33278,Qin Shi Ming Yue Tebie Pian: Di Zi Jiang Xi,Unknown,"Action, Historical, Martial Arts, Fantasy",1,Chukong Technologies,2023-02-17
+33279,Nanocore: NG Scenes - Nano's Daily Life,Unknown,"Comedy, Sci-Fi",2,Coastline Animation Studio,2023-02-17
+33280,Gochuumon wa Usagi Desu ka??: Dear My Sister,7.79,"Slice of Life, Comedy",1,Showgate,2023-02-17
+33281,Mori no Andou,5.92,Comedy,1,Unknown,2023-02-17
+33282,Arakure Junichi no Namida,4.51,Comedy,1,Unknown,2023-02-17
+33283,Nude Batter Tetsuo,4.75,"Comedy, Sports",1,Unknown,2023-02-17
+33286,Strike the Blood II,7.06,"Action, Harem, Supernatural, Ecchi, Vampire, Fantasy",8,"Movic, Warner Bros. Japan, KlockWorx, ASCII Media Works, Hakuhodo DY Music & Pictures",2023-02-17
+33290,Gra-P & Rodeo II,Unknown,"Music, Comedy",27,Lantis,2023-02-17
+33291,Pinkerton,6.64,Hentai,3,Media Bank,2023-02-17
+33295,Xian Yue Meng Ying,Unknown,"Action, Shounen Ai, Supernatural",1,Unknown,2023-02-17
+33299,Magic-Kyun! Renaissance,7.08,"Music, Magic, Romance, School",13,"Broccoli, Pony Canyon, Bandai Namco Live Creative, Sunrise Music Publishing, Bandai Namco Rights Marketing",2023-02-17
+33300,Manga Kotowaja Jiten,Unknown,"Comedy, Historical",88,TV Tokyo,2023-02-17
+33302,Yowamushi Pedal: Spare Bike,7.47,"Comedy, Sports, Drama, Shounen",1,Unknown,2023-02-17
+33305,Hua Jianghu Zhi Ling Zhu,6.81,"Action, Historical, Drama, Martial Arts, Fantasy",41,Beijing Rocen Digital,2023-02-17
+33308,Tantei Opera Milky Holmes: Fun Fun Party Night♪ - Ken to Janet no Okurimono,6.72,"Mystery, Comedy, Super Power",1,Unknown,2023-02-17
+33309,Jie Mo Ren,6.19,"Action, Mystery, Supernatural, Fantasy",14,Tencent Animation & Comics,2023-02-17
+33310,Peach Command Shin Momotarou Densetsu,Unknown,"Adventure, Comedy",24,TV Tokyo,2023-02-17
+33312,Color Noise,4.56,Dementia,1,Unknown,2023-02-17
+33314,Digimon Universe: Appli Monsters,6.61,"Action, Sci-Fi, Adventure, Comedy, Kids, Fantasy",52,Unknown,2023-02-17
+33318,Scripta Volant,Unknown,"Dementia, Drama",1,Geidai Animation,2023-02-17
+33319,Wareware no Heya,Unknown,Unknown,1,Unknown,2023-02-17
+33320,Suijungenten​,Unknown,Unknown,1,Unknown,2023-02-17
+33322,JK Bitch ni Shiboraretai,7.2,Hentai,2,Unknown,2023-02-17
+33323,"Kamisama Hajimemashita: Kamisama, Shiawase ni Naru",8.09,"Comedy, Demons, Supernatural, Romance, Fantasy, Shoujo",1,Unknown,2023-02-17
+33325,Ganbare!! Tabuchi-kun!! Aa Tsuppari Jinsei,Unknown,"Comedy, Sports",1,Unknown,2023-02-17
+33326,Aftermath,6.05,"Military, Music, Drama",1,Unknown,2023-02-17
+33335,Hajimete no Eigo: Nippon Mukashibanashi,6.94,"Kids, Fantasy",18,Unknown,2023-02-17
+33337,ACCA: 13-ku Kansatsu-ka,7.68,"Mystery, Police, Drama, Fantasy, Seinen",12,"Bandai Visual, Square Enix, Lantis, Nihon Ad Systems, Banpresto, Medicos Entertainment, BS11, Sony PCL, Contents Seed",2023-02-17
+33338,One Piece: Heart of Gold,7.53,"Action, Adventure, Comedy, Drama, Fantasy, Shounen",1,Unknown,2023-02-17
+33339,Zhongguo Jingqi Xiansheng,6.32,"Comedy, Supernatural, Thriller",63,"Tencent Animation & Comics, Colored-Pencil Animation Design",2023-02-17
+33341,Time Travel Shoujo: Mari Waka to 8-nin no Kagakusha-tachi,6.52,"Sci-Fi, Adventure",12,"TV Tokyo, Studio Mausu",2023-02-17
+33342,Ari to Kirigirisu,Unknown,"Kids, Music",1,Gakken,2023-02-17
+33343,Omusubi Kororin,Unknown,"Fantasy, Kids",1,Gakken,2023-02-17
+33344,Cello Hiki no Gauche,5.81,"Music, Kids, Fantasy",1,Gakken,2023-02-17
+33348,Kushimitama Samurai,Unknown,"Action, Adventure, Drama, Historical, Samurai",1,Unknown,2023-02-17
+33349,Hajimete no Eigo: Sekai Meisaku Douwa,Unknown,"Kids, Fantasy",18,Unknown,2023-02-17
+33350,Zhen Hun Jie,7.76,"Action, Supernatural",24,Yaoqi,2023-02-17
+33352,Violet Evergarden,8.64,"Slice of Life, Drama, Fantasy",13,"Lantis, Pony Canyon, Rakuonsha, ABC Animation",2023-02-17
+33354,Cardcaptor Sakura: Clear Card-hen,7.66,"Adventure, Comedy, Fantasy, Magic, Romance, Shoujo",22,"NHK, Kodansha, NHK Enterprises",2023-02-17
+33357,Wo Jiao Bai Xiaofei,6.24,"Action, Comedy, Horror",39,"Tencent Animation & Comics, Studio LAN",2023-02-17
+33358,Mahou no Star Magical Emi: Finale! Finale!,Unknown,"Comedy, Magic, Shoujo",1,Unknown,2023-02-17
+33360,Code Geass: Boukoku no Akito 5 - Itoshiki Mono-tachi e Picture Drama,6.51,"Military, Comedy",1,Unknown,2023-02-17
+33362,Starmyu 2nd Season,7.33,"Music, Slice of Life, School",12,NBCUniversal Entertainment Japan,2023-02-17
+33363,"""Eiyuu"" Kaitai",6.01,"Comedy, Drama",1,Unknown,2023-02-17
+33366,Toukiden 2,5.56,"Action, Demons",3,Unknown,2023-02-17
+33369,Metronome,6.23,Music,1,Unknown,2023-02-17
+33371,Atom: The Beginning,6.85,"Action, Sci-Fi, Mecha, Seinen",12,"NHK, Tezuka Productions, Studio Mausu, NBCUniversal Entertainment Japan, Hakuhodo DY Music & Pictures, Fields",2023-02-17
+33372,Overlord: Ple Ple Pleiades - Nazarick Saidai no Kiki,6.92,"Action, Comedy, Magic, Fantasy",1,Unknown,2023-02-17
+33377,"Trickster: Edogawa Ranpo ""Shounen Tanteidan"" yori",6.23,"Sci-Fi, Mystery, Psychological, Drama",24,"Bandai Visual, Yomiuri Telecasting, Lantis, Asmik Ace, JR East Marketing & Communications, Sumitomo, Akatsuki",2023-02-17
+33378,"Haikara-san ga Tooru Movie 1: Benio, Hana no 17-sai",7.5,"Comedy, Historical, Romance, Shoujo",1,"Kodansha, Warner Bros. Japan, KlockWorx, Tokyo MX, Asahi Shimbun",2023-02-17
+33383,Mask Masters,Unknown,"Action, Adventure",26,Unknown,2023-02-17
+33387,Ippou Nippon Mukashibanashi,Unknown,"Comedy, Fantasy",12,Unknown,2023-02-17
+33388,Charanpo Land no Bouken,Unknown,Unknown,1,Studio Comet,2023-02-17
+33389,Genbanojou,Unknown,Unknown,1,Unknown,2023-02-17
+33390,Zunda Horizon,5.68,Unknown,1,Imagine,2023-02-17
+33391,Red Ash: Gearworld,5.66,"Action, Sci-Fi",1,Unknown,2023-02-17
+33392,Gakuen Handsome,6.62,"Comedy, Parody, School, Shounen Ai",12,Unknown,2023-02-17
+33393,Enkou Shoujo: Rikujoubu Yukki no Baai The Animation,6.55,Hentai,1,Pink Pineapple,2023-02-17
+33394,Mahou Shoujo? Naria☆Girls,3.84,Magic,12,"Pony Canyon, Pony Canyon Enterprise, Smiral Animation",2023-02-17
+33396,Hua Jiang Hu Zhi Bu Liang Ren,6.55,"Adventure, Historical, Drama, Romance, Martial Arts",54,Beijing Rocen Digital,2023-02-17
+33398,Neko Konogoro,Unknown,Comedy,Unknown,Anime Beans,2023-02-17
 32566,Noblesse: Pamyeol-ui Sijak,7.31,"Action, Adventure, Supernatural",1,Unknown,2023-02-17
 32568,Kamiwaza Wanda,Unknown,"Sci-Fi, Kids",47,TBS,2023-02-17
 32571,Shounen Ashibe: Go! Go! Goma-chan,6.12,"Slice of Life, Comedy, Seinen",32,Unknown,2023-02-17
@@ -11802,81 +11877,6 @@
 33244,Kiitarou Shounen no Youkai Enikki,6.45,"Comedy, Supernatural",12,Cloud22,2023-02-17
 33245,Ame-iro Cocoa in Hawaii,4.77,"Comedy, Slice of Life",12,DAX Production,2023-02-17
 33247,Tsubasa to Hotaru (2016),6.39,"Romance, School, Shoujo",3,Unknown,2023-02-17
-33248,K: Seven Stories Movie 1 - R:B - Blaze,7.37,"Action, Super Power, Supernatural, Drama",1,Unknown,2023-02-17
-33253,Ajin 2nd Season,7.68,"Action, Horror, Mystery, Seinen, Supernatural",13,"TOHO animation, King Records",2023-02-17
-33254,Arslan Senki (TV) Gaiden,7.01,"Adventure, Historical, Fantasy, Shounen",2,Unknown,2023-02-17
-33255,Saiki Kusuo no Ψ-nan,8.45,"Comedy, School, Shounen, Slice of Life, Supernatural",120,"TV Tokyo, Shogakukan-Shueisha Productions, Pony Canyon, Nippon Columbia, KlockWorx, Asmik Ace, Bandai Namco Entertainment, Shueisha, Toy's Factory, Dear Stage inc.",2023-02-17
-33258,Qin Shi Ming Yue: Guoqing Tebie Pian,Unknown,"Action, Comedy, Parody, Martial Arts",1,Unknown,2023-02-17
-33262,Chobitto Zukan,Unknown,"Fantasy, Kids",52,Unknown,2023-02-17
-33263,Kubikiri Cycle: Aoiro Savant to Zaregototsukai,7.82,"Action, Mystery, Supernatural, Drama",8,"Aniplex, Kodansha",2023-02-17
-33266,Nanocore,6.14,Sci-Fi,10,Coastline Animation Studio,2023-02-17
-33267,Jinxiu Shenzhou Zhi Qi You Ji,Unknown,"Adventure, Fantasy",Unknown,Unknown,2023-02-17
-33271,Nanocore 2nd Season,Unknown,"Action, Sci-Fi",10,Coastline Animation Studio,2023-02-17
-33272,Nanocore 2016 Xinnian Tebie Ban,5.57,Music,1,Coastline Animation Studio,2023-02-17
-33273,Bouningen Weekend,5.36,Slice of Life,20,Unknown,2023-02-17
-33274,Onara Gorou,5.51,Comedy,13,Unknown,2023-02-17
-33276,Konnichiwa Onara Gorou,4.54,Comedy,1,Unknown,2023-02-17
-33278,Qin Shi Ming Yue Tebie Pian: Di Zi Jiang Xi,Unknown,"Action, Historical, Martial Arts, Fantasy",1,Chukong Technologies,2023-02-17
-33279,Nanocore: NG Scenes - Nano's Daily Life,Unknown,"Comedy, Sci-Fi",2,Coastline Animation Studio,2023-02-17
-33280,Gochuumon wa Usagi Desu ka??: Dear My Sister,7.79,"Slice of Life, Comedy",1,Showgate,2023-02-17
-33281,Mori no Andou,5.92,Comedy,1,Unknown,2023-02-17
-33282,Arakure Junichi no Namida,4.51,Comedy,1,Unknown,2023-02-17
-33283,Nude Batter Tetsuo,4.75,"Comedy, Sports",1,Unknown,2023-02-17
-33286,Strike the Blood II,7.06,"Action, Harem, Supernatural, Ecchi, Vampire, Fantasy",8,"Movic, Warner Bros. Japan, KlockWorx, ASCII Media Works, Hakuhodo DY Music & Pictures",2023-02-17
-33290,Gra-P & Rodeo II,Unknown,"Music, Comedy",27,Lantis,2023-02-17
-33291,Pinkerton,6.64,Hentai,3,Media Bank,2023-02-17
-33295,Xian Yue Meng Ying,Unknown,"Action, Shounen Ai, Supernatural",1,Unknown,2023-02-17
-33299,Magic-Kyun! Renaissance,7.08,"Music, Magic, Romance, School",13,"Broccoli, Pony Canyon, Bandai Namco Live Creative, Sunrise Music Publishing, Bandai Namco Rights Marketing",2023-02-17
-33300,Manga Kotowaja Jiten,Unknown,"Comedy, Historical",88,TV Tokyo,2023-02-17
-33302,Yowamushi Pedal: Spare Bike,7.47,"Comedy, Sports, Drama, Shounen",1,Unknown,2023-02-17
-33305,Hua Jianghu Zhi Ling Zhu,6.81,"Action, Historical, Drama, Martial Arts, Fantasy",41,Beijing Rocen Digital,2023-02-17
-33308,Tantei Opera Milky Holmes: Fun Fun Party Night♪ - Ken to Janet no Okurimono,6.72,"Mystery, Comedy, Super Power",1,Unknown,2023-02-17
-33309,Jie Mo Ren,6.19,"Action, Mystery, Supernatural, Fantasy",14,Tencent Animation & Comics,2023-02-17
-33310,Peach Command Shin Momotarou Densetsu,Unknown,"Adventure, Comedy",24,TV Tokyo,2023-02-17
-33312,Color Noise,4.56,Dementia,1,Unknown,2023-02-17
-33314,Digimon Universe: Appli Monsters,6.61,"Action, Sci-Fi, Adventure, Comedy, Kids, Fantasy",52,Unknown,2023-02-17
-33318,Scripta Volant,Unknown,"Dementia, Drama",1,Geidai Animation,2023-02-17
-33319,Wareware no Heya,Unknown,Unknown,1,Unknown,2023-02-17
-33320,Suijungenten​,Unknown,Unknown,1,Unknown,2023-02-17
-33322,JK Bitch ni Shiboraretai,7.2,Hentai,2,Unknown,2023-02-17
-33323,"Kamisama Hajimemashita: Kamisama, Shiawase ni Naru",8.09,"Comedy, Demons, Supernatural, Romance, Fantasy, Shoujo",1,Unknown,2023-02-17
-33325,Ganbare!! Tabuchi-kun!! Aa Tsuppari Jinsei,Unknown,"Comedy, Sports",1,Unknown,2023-02-17
-33326,Aftermath,6.05,"Military, Music, Drama",1,Unknown,2023-02-17
-33335,Hajimete no Eigo: Nippon Mukashibanashi,6.94,"Kids, Fantasy",18,Unknown,2023-02-17
-33337,ACCA: 13-ku Kansatsu-ka,7.68,"Mystery, Police, Drama, Fantasy, Seinen",12,"Bandai Visual, Square Enix, Lantis, Nihon Ad Systems, Banpresto, Medicos Entertainment, BS11, Sony PCL, Contents Seed",2023-02-17
-33338,One Piece: Heart of Gold,7.53,"Action, Adventure, Comedy, Drama, Fantasy, Shounen",1,Unknown,2023-02-17
-33339,Zhongguo Jingqi Xiansheng,6.32,"Comedy, Supernatural, Thriller",63,"Tencent Animation & Comics, Colored-Pencil Animation Design",2023-02-17
-33341,Time Travel Shoujo: Mari Waka to 8-nin no Kagakusha-tachi,6.52,"Sci-Fi, Adventure",12,"TV Tokyo, Studio Mausu",2023-02-17
-33342,Ari to Kirigirisu,Unknown,"Kids, Music",1,Gakken,2023-02-17
-33343,Omusubi Kororin,Unknown,"Fantasy, Kids",1,Gakken,2023-02-17
-33344,Cello Hiki no Gauche,5.81,"Music, Kids, Fantasy",1,Gakken,2023-02-17
-33348,Kushimitama Samurai,Unknown,"Action, Adventure, Drama, Historical, Samurai",1,Unknown,2023-02-17
-33349,Hajimete no Eigo: Sekai Meisaku Douwa,Unknown,"Kids, Fantasy",18,Unknown,2023-02-17
-33350,Zhen Hun Jie,7.76,"Action, Supernatural",24,Yaoqi,2023-02-17
-33352,Violet Evergarden,8.64,"Slice of Life, Drama, Fantasy",13,"Lantis, Pony Canyon, Rakuonsha, ABC Animation",2023-02-17
-33354,Cardcaptor Sakura: Clear Card-hen,7.66,"Adventure, Comedy, Fantasy, Magic, Romance, Shoujo",22,"NHK, Kodansha, NHK Enterprises",2023-02-17
-33357,Wo Jiao Bai Xiaofei,6.24,"Action, Comedy, Horror",39,"Tencent Animation & Comics, Studio LAN",2023-02-17
-33358,Mahou no Star Magical Emi: Finale! Finale!,Unknown,"Comedy, Magic, Shoujo",1,Unknown,2023-02-17
-33360,Code Geass: Boukoku no Akito 5 - Itoshiki Mono-tachi e Picture Drama,6.51,"Military, Comedy",1,Unknown,2023-02-17
-33362,Starmyu 2nd Season,7.33,"Music, Slice of Life, School",12,NBCUniversal Entertainment Japan,2023-02-17
-33363,"""Eiyuu"" Kaitai",6.01,"Comedy, Drama",1,Unknown,2023-02-17
-33366,Toukiden 2,5.56,"Action, Demons",3,Unknown,2023-02-17
-33369,Metronome,6.23,Music,1,Unknown,2023-02-17
-33371,Atom: The Beginning,6.85,"Action, Sci-Fi, Mecha, Seinen",12,"NHK, Tezuka Productions, Studio Mausu, NBCUniversal Entertainment Japan, Hakuhodo DY Music & Pictures, Fields",2023-02-17
-33372,Overlord: Ple Ple Pleiades - Nazarick Saidai no Kiki,6.92,"Action, Comedy, Magic, Fantasy",1,Unknown,2023-02-17
-33377,"Trickster: Edogawa Ranpo ""Shounen Tanteidan"" yori",6.23,"Sci-Fi, Mystery, Psychological, Drama",24,"Bandai Visual, Yomiuri Telecasting, Lantis, Asmik Ace, JR East Marketing & Communications, Sumitomo, Akatsuki",2023-02-17
-33378,"Haikara-san ga Tooru Movie 1: Benio, Hana no 17-sai",7.5,"Comedy, Historical, Romance, Shoujo",1,"Kodansha, Warner Bros. Japan, KlockWorx, Tokyo MX, Asahi Shimbun",2023-02-17
-33383,Mask Masters,Unknown,"Action, Adventure",26,Unknown,2023-02-17
-33387,Ippou Nippon Mukashibanashi,Unknown,"Comedy, Fantasy",12,Unknown,2023-02-17
-33388,Charanpo Land no Bouken,Unknown,Unknown,1,Studio Comet,2023-02-17
-33389,Genbanojou,Unknown,Unknown,1,Unknown,2023-02-17
-33390,Zunda Horizon,5.68,Unknown,1,Imagine,2023-02-17
-33391,Red Ash: Gearworld,5.66,"Action, Sci-Fi",1,Unknown,2023-02-17
-33392,Gakuen Handsome,6.62,"Comedy, Parody, School, Shounen Ai",12,Unknown,2023-02-17
-33393,Enkou Shoujo: Rikujoubu Yukki no Baai The Animation,6.55,Hentai,1,Pink Pineapple,2023-02-17
-33394,Mahou Shoujo? Naria☆Girls,3.84,Magic,12,"Pony Canyon, Pony Canyon Enterprise, Smiral Animation",2023-02-17
-33396,Hua Jiang Hu Zhi Bu Liang Ren,6.55,"Adventure, Historical, Drama, Romance, Martial Arts",54,Beijing Rocen Digital,2023-02-17
-33398,Neko Konogoro,Unknown,Comedy,Unknown,Anime Beans,2023-02-17
 33400,Jigoku de Naze Warui,Unknown,Music,1,Victor Entertainment,2023-02-17
 33401,Momotarou (Music),5.0,Music,1,Sony Music Entertainment,2023-02-17
 33414,Otona no Ikkyuu-san,Unknown,"Comedy, Historical",13,NHK,2023-02-17
@@ -15151,6 +15151,83 @@
 38817,Takarasagashi no Natsuyasumi,6.27,Hentai,1,Unknown,2023-02-17
 38818,Please! Marry Me!!,Unknown,"Action, Music",1,Toy's Factory,2023-02-17
 38819,Bad! Bad! Bad!,5.44,"Action, Cars, Music",1,Toy's Factory,2023-02-17
+39140,Hong Mao Lan Tu: Qi Xia Waizhuan,Unknown,Kids,52,Unknown,2023-02-17
+39141,Hua Jiang Hu Zhi Bu Liang Ren 3rd Season,Unknown,"Historical, Drama, Romance, Martial Arts, Fantasy",40,Unknown,2023-02-17
+39143,Youkoso! Ecolo Shima,Unknown,Kids,1,Unknown,2023-02-17
+39144,Chikyuu SOS: Chikyuu ga Netsu wo Dashite Iru,Unknown,Kids,1,Unknown,2023-02-17
+39145,Sakura to Sakurin,Unknown,Kids,1,Unknown,2023-02-17
+39146,Chikyuu ni Yasashii Shopping: Midori-chan to Recycle-ku Shopping,Unknown,Kids,1,Unknown,2023-02-17
+39147,Hachidori no Hito Shizuku: Watashi ni Dekiru koto,Unknown,Kids,1,Unknown,2023-02-17
+39148,Mottainai,Unknown,Kids,1,Unknown,2023-02-17
+39149,Ushiwakamaru,Unknown,"Historical, Kids",4,Unknown,2023-02-17
+39150,Otogi,7.11,Music,4,"Toy's Factory, TriF Studio",2023-02-17
+39151,Risu no Matoi,Unknown,Kids,1,Unknown,2023-02-17
+39152,Wan Wan Kajida Wan,Unknown,"Kids, Sci-Fi",1,Unknown,2023-02-17
+39153,Mary Bell no Hi no Youjin: Guratto Kitara Dousuru,Unknown,Kids,1,Unknown,2023-02-17
+39154,Mary Bell no Koutsuu Anzen,Unknown,Kids,1,Unknown,2023-02-17
+39155,Kuma-san no My Home,Unknown,Kids,1,Unknown,2023-02-17
+39156,Kaji to Kouma,Unknown,Kids,1,Unknown,2023-02-17
+39157,Maple Town no Shouboutai,Unknown,Kids,1,Unknown,2023-02-17
+39158,Maple Town no Koutsuu Anzen,Unknown,Kids,1,Unknown,2023-02-17
+39159,Shima Shima Tora no Shimajirou no Shouboutai,Unknown,Kids,1,Unknown,2023-02-17
+39160,Shima Shima Tora no Shimajirou no Koutsuu Anzen,Unknown,Kids,1,Unknown,2023-02-17
+39161,Habatake Pii-tan,Unknown,Kids,1,Unknown,2023-02-17
+39162,Tatakae! Chou Robot Seimeitai Transformers Victory Soushuuhen,Unknown,"Mecha, Sci-Fi",6,Unknown,2023-02-17
+39163,Nonsense Bungaku,6.67,Music,1,Unknown,2023-02-17
+39164,Dramaturgy,7.52,Music,1,Unknown,2023-02-17
+39165,Oki ni Mesu mama,7.22,Music,1,Unknown,2023-02-17
+39166,Girls & Panzer: Saishuushou Part 3,Unknown,"Military, School",1,Unknown,2023-02-17
+39167,Girls & Panzer: Saishuushou Part 4,Unknown,"Military, School",1,Unknown,2023-02-17
+39168,Girls & Panzer: Saishuushou Part 5,Unknown,"Military, School",1,Unknown,2023-02-17
+39169,Girls & Panzer: Saishuushou Part 6,Unknown,"Military, School",1,Unknown,2023-02-17
+39170,Dead End Street,Unknown,Music,1,Unknown,2023-02-17
+39171,Sect,Unknown,Music,1,Unknown,2023-02-17
+39172,Kaisei,Unknown,Music,1,Unknown,2023-02-17
+39173,Haita,5.93,Music,1,Unknown,2023-02-17
+39174,Sister,6.12,Music,1,Unknown,2023-02-17
+39175,Cider no You ni Kotoba ga Wakiagaru,Unknown,Music,1,flying DOG,2023-02-17
+39178,Doupo Cangqiong 2nd Season Specials,7.31,"Action, Adventure, Demons, Fantasy",3,"Tencent Penguin Pictures, China Literature Limited",2023-02-17
+39179,In the Sea and near a Girl.,Unknown,"Dementia, Music",1,Unknown,2023-02-17
+39180,"On a Forest, in the Air",Unknown,Dementia,1,Unknown,2023-02-17
+39181,Shiroi Niji,Unknown,"Dementia, Music",1,Unknown,2023-02-17
+39182,H'or Cafe,Unknown,Music,1,Unknown,2023-02-17
+39183,Super Shiro,6.0,Kids,48,"Shin-Ei Animation, TV Aichi, Futabasha, Audio Planning U, Imagine",2023-02-17
+39184,A3! Season Spring & Summer,7.14,"Slice of Life, Drama",12,"Pony Canyon, Liber Entertainment",2023-02-17
+39185,Tatakau Mono-tachi e Ai wo Komete,6.32,"Drama, Music",1,Unknown,2023-02-17
+39187,Daisy Blue,Unknown,Music,1,Unknown,2023-02-17
+39188,Xie Wang Zhui Qi,6.7,"Action, Comedy, Drama, Romance, Martial Arts, Fantasy",13,iQIYI,2023-02-17
+39189,Te Ke Dong Ji Pian,Unknown,Action,54,Unknown,2023-02-17
+39190,Wang Zhe Wai Chuan,Unknown,Comedy,12,Unknown,2023-02-17
+39191,Wan Jie Shen Zhu,6.98,"Adventure, Fantasy",60,Unknown,2023-02-17
+39192,Xia Gu Zhong An Zu,Unknown,Fantasy,12,Unknown,2023-02-17
+39194,Shin Chuuka Ichiban!,6.4,"Comedy, Shounen",12,"Kodansha, DMM pictures, JY Animation, China Film Animation, Beijing IMMG",2023-02-17
+39195,Beastars,8.05,"Slice of Life, Psychological, Drama, Shounen",12,"Movic, Fuji TV, Bandai, Toho, BS Fuji, TOHO animation, Q-Tec, Akita Shoten, Hakuhodo DY Media Partners, Bandai Spirits",2023-02-17
+39196,Mairimashita! Iruma-kun,7.7,"Comedy, Demons, Supernatural, Fantasy, School, Shounen",23,"NHK, NHK Enterprises",2023-02-17
+39197,Karrimor Mountain Club,Unknown,"Adventure, Slice of Life",4,Unknown,2023-02-17
+39198,Kanata no Astra,8.16,"Sci-Fi, Adventure, Space, Shounen",12,"AT-X, Docomo Anime Store, Shueisha, Kadokawa Media House, Kadokawa",2023-02-17
+39199,Katsute Kami Datta Kemono-tachi e,6.41,"Action, Drama, Fantasy, Military, Shounen",12,"Kodansha, NBCUniversal Entertainment Japan, Tokyo MX, BS11, JR East Marketing & Communications, Cygames, A-Sketch",2023-02-17
+39200,Inu Gyorai,Unknown,Music,1,Unknown,2023-02-17
+39201,Kurage Nasu,Unknown,Music,1,Unknown,2023-02-17
+39202,Kazami Tori,Unknown,Music,1,Unknown,2023-02-17
+39203,Idobata Gossip,Unknown,Music,1,Exit Tunes,2023-02-17
+39204,Demon Dance Tokyo,6.29,Music,1,Unknown,2023-02-17
+39205,Oshamani,Unknown,Kids,Unknown,Kamio Japan,2023-02-17
+39206,Ohanashi no Hana,Unknown,Slice of Life,1,Unknown,2023-02-17
+39207,Oned,Unknown,Music,1,Unknown,2023-02-17
+39208,100% Renewable Energy,5.8,Music,1,Unknown,2023-02-17
+39209,Just a Seeker's Song,Unknown,"Dementia, Music",1,Victor Entertainment,2023-02-17
+39211,Fire Me Up,5.39,Music,1,Unknown,2023-02-17
+39212,Daruma-san ga Koronda,Unknown,"Music, Slice of Life, Kids",1,NHK,2023-02-17
+39213,Dekkai Totto March,Unknown,"Adventure, Music, Kids",1,NHK,2023-02-17
+39214,Asa wo Kitan,Unknown,"Music, Slice of Life, Kids",1,NHK,2023-02-17
+39215,Sound of Love feat. Eden Kai,Unknown,Music,1,Unknown,2023-02-17
+39216,Casablanca,Unknown,Music,1,Unknown,2023-02-17
+39217,Mijikamon Episode 0,5.95,Comedy,1,Unknown,2023-02-17
+39219,Sun,Unknown,Music,1,Space Shower Music,2023-02-17
+39220,Wormy,Unknown,Music,1,Unknown,2023-02-17
+39221,Bem,6.03,"Action, Demons, Supernatural",12,"TV Tokyo, Nihon Ad Systems, Pony Canyon, KlockWorx, flying DOG",2023-02-17
+39222,Move to the Future,Unknown,Sci-Fi,Unknown,Unknown,2023-02-17
+39223,Fei Ren Xueyuan,6.23,"Action, Game",1,Unknown,2023-02-17
 38820,Chibi Godzilla,Unknown,Kids,Unknown,Unknown,2023-02-17
 38821,Wedding Park,Unknown,Romance,2,Unknown,2023-02-17
 38824,Baby I Love You Daze,7.42,"Music, Romance",1,Unknown,2023-02-17
@@ -15373,83 +15450,6 @@
 39137,Hong Mao Lan Tu: Meng Guo Li Xian Ji,Unknown,Kids,56,Unknown,2023-02-17
 39138,Hong Mao Lan Tu: Ao You Guo Lixian Ji,Unknown,Kids,48,Unknown,2023-02-17
 39139,Hong Mao Lan Tu: Kuaile Shizi,Unknown,Kids,80,Unknown,2023-02-17
-39140,Hong Mao Lan Tu: Qi Xia Waizhuan,Unknown,Kids,52,Unknown,2023-02-17
-39141,Hua Jiang Hu Zhi Bu Liang Ren 3rd Season,Unknown,"Historical, Drama, Romance, Martial Arts, Fantasy",40,Unknown,2023-02-17
-39143,Youkoso! Ecolo Shima,Unknown,Kids,1,Unknown,2023-02-17
-39144,Chikyuu SOS: Chikyuu ga Netsu wo Dashite Iru,Unknown,Kids,1,Unknown,2023-02-17
-39145,Sakura to Sakurin,Unknown,Kids,1,Unknown,2023-02-17
-39146,Chikyuu ni Yasashii Shopping: Midori-chan to Recycle-ku Shopping,Unknown,Kids,1,Unknown,2023-02-17
-39147,Hachidori no Hito Shizuku: Watashi ni Dekiru koto,Unknown,Kids,1,Unknown,2023-02-17
-39148,Mottainai,Unknown,Kids,1,Unknown,2023-02-17
-39149,Ushiwakamaru,Unknown,"Historical, Kids",4,Unknown,2023-02-17
-39150,Otogi,7.11,Music,4,"Toy's Factory, TriF Studio",2023-02-17
-39151,Risu no Matoi,Unknown,Kids,1,Unknown,2023-02-17
-39152,Wan Wan Kajida Wan,Unknown,"Kids, Sci-Fi",1,Unknown,2023-02-17
-39153,Mary Bell no Hi no Youjin: Guratto Kitara Dousuru,Unknown,Kids,1,Unknown,2023-02-17
-39154,Mary Bell no Koutsuu Anzen,Unknown,Kids,1,Unknown,2023-02-17
-39155,Kuma-san no My Home,Unknown,Kids,1,Unknown,2023-02-17
-39156,Kaji to Kouma,Unknown,Kids,1,Unknown,2023-02-17
-39157,Maple Town no Shouboutai,Unknown,Kids,1,Unknown,2023-02-17
-39158,Maple Town no Koutsuu Anzen,Unknown,Kids,1,Unknown,2023-02-17
-39159,Shima Shima Tora no Shimajirou no Shouboutai,Unknown,Kids,1,Unknown,2023-02-17
-39160,Shima Shima Tora no Shimajirou no Koutsuu Anzen,Unknown,Kids,1,Unknown,2023-02-17
-39161,Habatake Pii-tan,Unknown,Kids,1,Unknown,2023-02-17
-39162,Tatakae! Chou Robot Seimeitai Transformers Victory Soushuuhen,Unknown,"Mecha, Sci-Fi",6,Unknown,2023-02-17
-39163,Nonsense Bungaku,6.67,Music,1,Unknown,2023-02-17
-39164,Dramaturgy,7.52,Music,1,Unknown,2023-02-17
-39165,Oki ni Mesu mama,7.22,Music,1,Unknown,2023-02-17
-39166,Girls & Panzer: Saishuushou Part 3,Unknown,"Military, School",1,Unknown,2023-02-17
-39167,Girls & Panzer: Saishuushou Part 4,Unknown,"Military, School",1,Unknown,2023-02-17
-39168,Girls & Panzer: Saishuushou Part 5,Unknown,"Military, School",1,Unknown,2023-02-17
-39169,Girls & Panzer: Saishuushou Part 6,Unknown,"Military, School",1,Unknown,2023-02-17
-39170,Dead End Street,Unknown,Music,1,Unknown,2023-02-17
-39171,Sect,Unknown,Music,1,Unknown,2023-02-17
-39172,Kaisei,Unknown,Music,1,Unknown,2023-02-17
-39173,Haita,5.93,Music,1,Unknown,2023-02-17
-39174,Sister,6.12,Music,1,Unknown,2023-02-17
-39175,Cider no You ni Kotoba ga Wakiagaru,Unknown,Music,1,flying DOG,2023-02-17
-39178,Doupo Cangqiong 2nd Season Specials,7.31,"Action, Adventure, Demons, Fantasy",3,"Tencent Penguin Pictures, China Literature Limited",2023-02-17
-39179,In the Sea and near a Girl.,Unknown,"Dementia, Music",1,Unknown,2023-02-17
-39180,"On a Forest, in the Air",Unknown,Dementia,1,Unknown,2023-02-17
-39181,Shiroi Niji,Unknown,"Dementia, Music",1,Unknown,2023-02-17
-39182,H'or Cafe,Unknown,Music,1,Unknown,2023-02-17
-39183,Super Shiro,6.0,Kids,48,"Shin-Ei Animation, TV Aichi, Futabasha, Audio Planning U, Imagine",2023-02-17
-39184,A3! Season Spring & Summer,7.14,"Slice of Life, Drama",12,"Pony Canyon, Liber Entertainment",2023-02-17
-39185,Tatakau Mono-tachi e Ai wo Komete,6.32,"Drama, Music",1,Unknown,2023-02-17
-39187,Daisy Blue,Unknown,Music,1,Unknown,2023-02-17
-39188,Xie Wang Zhui Qi,6.7,"Action, Comedy, Drama, Romance, Martial Arts, Fantasy",13,iQIYI,2023-02-17
-39189,Te Ke Dong Ji Pian,Unknown,Action,54,Unknown,2023-02-17
-39190,Wang Zhe Wai Chuan,Unknown,Comedy,12,Unknown,2023-02-17
-39191,Wan Jie Shen Zhu,6.98,"Adventure, Fantasy",60,Unknown,2023-02-17
-39192,Xia Gu Zhong An Zu,Unknown,Fantasy,12,Unknown,2023-02-17
-39194,Shin Chuuka Ichiban!,6.4,"Comedy, Shounen",12,"Kodansha, DMM pictures, JY Animation, China Film Animation, Beijing IMMG",2023-02-17
-39195,Beastars,8.05,"Slice of Life, Psychological, Drama, Shounen",12,"Movic, Fuji TV, Bandai, Toho, BS Fuji, TOHO animation, Q-Tec, Akita Shoten, Hakuhodo DY Media Partners, Bandai Spirits",2023-02-17
-39196,Mairimashita! Iruma-kun,7.7,"Comedy, Demons, Supernatural, Fantasy, School, Shounen",23,"NHK, NHK Enterprises",2023-02-17
-39197,Karrimor Mountain Club,Unknown,"Adventure, Slice of Life",4,Unknown,2023-02-17
-39198,Kanata no Astra,8.16,"Sci-Fi, Adventure, Space, Shounen",12,"AT-X, Docomo Anime Store, Shueisha, Kadokawa Media House, Kadokawa",2023-02-17
-39199,Katsute Kami Datta Kemono-tachi e,6.41,"Action, Drama, Fantasy, Military, Shounen",12,"Kodansha, NBCUniversal Entertainment Japan, Tokyo MX, BS11, JR East Marketing & Communications, Cygames, A-Sketch",2023-02-17
-39200,Inu Gyorai,Unknown,Music,1,Unknown,2023-02-17
-39201,Kurage Nasu,Unknown,Music,1,Unknown,2023-02-17
-39202,Kazami Tori,Unknown,Music,1,Unknown,2023-02-17
-39203,Idobata Gossip,Unknown,Music,1,Exit Tunes,2023-02-17
-39204,Demon Dance Tokyo,6.29,Music,1,Unknown,2023-02-17
-39205,Oshamani,Unknown,Kids,Unknown,Kamio Japan,2023-02-17
-39206,Ohanashi no Hana,Unknown,Slice of Life,1,Unknown,2023-02-17
-39207,Oned,Unknown,Music,1,Unknown,2023-02-17
-39208,100% Renewable Energy,5.8,Music,1,Unknown,2023-02-17
-39209,Just a Seeker's Song,Unknown,"Dementia, Music",1,Victor Entertainment,2023-02-17
-39211,Fire Me Up,5.39,Music,1,Unknown,2023-02-17
-39212,Daruma-san ga Koronda,Unknown,"Music, Slice of Life, Kids",1,NHK,2023-02-17
-39213,Dekkai Totto March,Unknown,"Adventure, Music, Kids",1,NHK,2023-02-17
-39214,Asa wo Kitan,Unknown,"Music, Slice of Life, Kids",1,NHK,2023-02-17
-39215,Sound of Love feat. Eden Kai,Unknown,Music,1,Unknown,2023-02-17
-39216,Casablanca,Unknown,Music,1,Unknown,2023-02-17
-39217,Mijikamon Episode 0,5.95,Comedy,1,Unknown,2023-02-17
-39219,Sun,Unknown,Music,1,Space Shower Music,2023-02-17
-39220,Wormy,Unknown,Music,1,Unknown,2023-02-17
-39221,Bem,6.03,"Action, Demons, Supernatural",12,"TV Tokyo, Nihon Ad Systems, Pony Canyon, KlockWorx, flying DOG",2023-02-17
-39222,Move to the Future,Unknown,Sci-Fi,Unknown,Unknown,2023-02-17
-39223,Fei Ren Xueyuan,6.23,"Action, Game",1,Unknown,2023-02-17
 39224,It's Show Time!,Unknown,Music,1,Avex Entertainment,2023-02-17
 39225,Watashi no Kamifuusen,Unknown,"Music, Kids",1,NHK,2023-02-17
 39226,Captain Tsubasa no Shouka Sakusen,Unknown,"Sports, Kids",1,Unknown,2023-02-17
@@ -16094,6 +16094,53 @@
 40340,Karakuri Circus,5.77,"Action, Mystery, Shounen",1,Unknown,2023-02-17
 40341,ARMS,Unknown,"Sci-Fi, Super Power, Shounen",1,Unknown,2023-02-17
 40342,Taka no Tsume-dan x Uchicomi!,Unknown,"Comedy, Parody, Slice of Life",5,Unknown,2023-02-17
+47623,Chickip Dancers,Unknown,Slice of Life,Unknown,Unknown,2023-02-17
+47634,Kamen Senshi Lavithunder CM,Unknown,Action,1,Unknown,2023-02-17
+47639,Blue Reflection Ray,Unknown,Magic,Unknown,Magic Capsule,2023-02-17
+47777,Toku: Touken Ranbu - Hanamaru - Setsugetsuka,Unknown,"Action, Slice of Life, Comedy, Historical, Drama, Fantasy",3,Unknown,2023-02-17
+47778,Kimetsu no Yaiba: Yuukaku-hen,Unknown,"Action, Historical, Demons, Supernatural, Shounen",Unknown,Unknown,2023-02-17
+47790,"Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",Unknown,"Action, Fantasy",Unknown,Unknown,2023-02-17
+47792,Maou Evelogia ni Mi wo Sasage yo,Unknown,"Fantasy, Yaoi",Unknown,Suiseisha,2023-02-17
+47795,Ai Zai Xi Yuan Qian 2nd Season,Unknown,"Fantasy, Romance",16,Unknown,2023-02-17
+47917,Bocchi the Rock!,Unknown,"Music, Slice of Life, Comedy",Unknown,Unknown,2023-02-17
+48097,Wan Jie Qi Yuan,Unknown,"Martial Arts, Fantasy",40,iQIYI,2023-02-17
+48171,Summer Ghost,Unknown,Unknown,1,Unknown,2023-02-17
+48177,Ichiban Chikakute Tooi Hoshi,Unknown,"Music, Drama",1,Unknown,2023-02-17
+48239,Leadale no Daichi nite,Unknown,"Adventure, Fantasy",Unknown,Unknown,2023-02-17
+48252,"Ore, Tsushima",Unknown,"Slice of Life, Comedy, Seinen",Unknown,Unknown,2023-02-17
+48316,Kage no Jitsuryokusha ni Naritakute!,Unknown,"Action, Comedy, Fantasy",Unknown,Unknown,2023-02-17
+48363,RPG Fudousan,Unknown,"Slice of Life, Comedy, Fantasy",Unknown,Unknown,2023-02-17
+48365,Youkai Watch ♪,Unknown,"Comedy, Demons, Kids, Supernatural",Unknown,Unknown,2023-02-17
+48369,Wo Shi Da Shenxian 2nd Season,Unknown,"Action, Martial Arts, Fantasy, Shounen",16,Tencent Animation & Comics,2023-02-17
+48374,Fei Ren Zai 4th Season,Unknown,"Slice of Life, Comedy, Supernatural",12,Unknown,2023-02-17
+48375,Mahouka Koukou no Rettousei: Tsuioku-hen,Unknown,"Sci-Fi, Supernatural, Magic",Unknown,Unknown,2023-02-17
+48391,Mazica Party,Unknown,"Game, Magic, Fantasy",Unknown,Unknown,2023-02-17
+48405,Totsukuni no Shoujo OVA,Unknown,"Supernatural, Shounen",1,"flying DOG, Sound Team Don Juan, Twin Engine",2023-02-17
+48406,Re-Main,Unknown,"Sports, School",Unknown,Bandai Namco Arts,2023-02-17
+48409,Chocomatsu-san: White Day-hen,Unknown,"Comedy, Parody",3,Unknown,2023-02-17
+48411,Aria the Benedizione,Unknown,"Sci-Fi, Slice of Life, Fantasy, Shounen",1,Unknown,2023-02-17
+48413,Hataraku Maou-sama! 2nd Season,Unknown,"Comedy, Demons, Supernatural, Romance, Fantasy",Unknown,Unknown,2023-02-17
+48414,Sabikui Bisco,Unknown,"Action, Adventure, Fantasy",Unknown,"flying DOG, Hakuhodo DY Music & Pictures",2023-02-17
+48415,"Shijou Saikyou no Daimaou, Murabito A ni Tensei suru",Unknown,"Action, Fantasy, School",Unknown,Unknown,2023-02-17
+48417,"Maou Gakuin no Futekigousha: Shijou Saikyou no Maou no Shiso, Tensei shite Shison-tachi no Gakkou e",Unknown,"Magic, Fantasy, School",Unknown,Aniplex,2023-02-17
+48418,"Maou Gakuin no Futekigousha: Shijou Saikyou no Maou no Shiso, Tensei shite Shison-tachi no Gakkou e",Unknown,"Action, Demons, Magic, Fantasy, School",Unknown,Aniplex,2023-02-17
+48422,Kazoku: Haha to Shimai no Kyousei,Unknown,Hentai,Unknown,Unknown,2023-02-17
+48425,Akuma-kun (Shin Anime),Unknown,"Horror, Demons, Supernatural, Thriller",Unknown,Unknown,2023-02-17
+48426,Kitarou Tanjou: Gegege no Nazo,Unknown,"Comedy, Demons, Supernatural, Shounen",1,Unknown,2023-02-17
+48427,"The Sun, Moon and Stars",Unknown,Music,1,Unknown,2023-02-17
+48438,Mahoutsukai no Yome: Nishi no Shounen to Seiran no Kishi,Unknown,"Slice of Life, Magic, Fantasy, Shounen",3,"flying DOG, Sound Team Don Juan, Twin Engine",2023-02-17
+48441,Eiyuu Densetsu: Sen no Kiseki,Unknown,Action,Unknown,Unknown,2023-02-17
+48442,Shikaru Neko,Unknown,Slice of Life,Unknown,Unknown,2023-02-17
+48456,SK∞: Crazy Rock Jam,6.52,"Comedy, Sports",1,"Aniplex, Movic, ABC Animation",2023-02-17
+48466,Kyoukai Senki,Unknown,"Action, Mecha",Unknown,Bandai Spirits,2023-02-17
+48470,D_Cide Traumerei,Unknown,"Action, Adventure, Drama, Magic, Fantasy",Unknown,"Bushiroad, Bit grooove promotion",2023-02-17
+48471,Tsuki to Laika to Nosferatu,Unknown,"Sci-Fi, Space, Vampire",Unknown,Bandai Namco Arts,2023-02-17
+48480,Wan Jie Shen Zhu 3rd Season,Unknown,"Adventure, Fantasy",48,Unknown,2023-02-17
+48481,Daomu Biji Zhi Qinling Shen Shu,Unknown,"Adventure, Mystery, Supernatural",Unknown,Unknown,2023-02-17
+48483,Mieruko-chan,Unknown,"Comedy, Horror, Supernatural",Unknown,Kadokawa,2023-02-17
+48488,Higurashi no Naku Koro ni Sotsu,Unknown,"Mystery, Dementia, Horror, Psychological, Supernatural, Thriller",Unknown,Unknown,2023-02-17
+48491,Yama no Susume: Next Summit,Unknown,"Adventure, Slice of Life, Comedy",Unknown,Kadokawa,2023-02-17
+48492,Scarlet Nexus,Unknown,"Action, Fantasy",Unknown,Bandai Namco Arts,2023-02-17
 40344,Baumkuchen End,6.79,Music,1,Unknown,2023-02-17
 40345,Devil & Devil,Unknown,"Action, Comedy, Super Power, Demons, Supernatural, Shounen",1,Unknown,2023-02-17
 40346,Tuxedo Gin,Unknown,"Comedy, Supernatural, Shounen",1,Unknown,2023-02-17
@@ -17511,50 +17558,3 @@
 47614,Nu Wushen de Canzhuo Spring Festival Special,6.83,"Slice of Life, Comedy",1,Unknown,2023-02-17
 47616,Yakusoku no Neverland 2nd Season: Michishirube,4.81,"Mystery, Psychological, Supernatural, Thriller, Shounen",1,Unknown,2023-02-17
 47618,Ichi Nichi Shite Narazu,Unknown,Slice of Life,1,Studio Mausu,2023-02-17
-47623,Chickip Dancers,Unknown,Slice of Life,Unknown,Unknown,2023-02-17
-47634,Kamen Senshi Lavithunder CM,Unknown,Action,1,Unknown,2023-02-17
-47639,Blue Reflection Ray,Unknown,Magic,Unknown,Magic Capsule,2023-02-17
-47777,Toku: Touken Ranbu - Hanamaru - Setsugetsuka,Unknown,"Action, Slice of Life, Comedy, Historical, Drama, Fantasy",3,Unknown,2023-02-17
-47778,Kimetsu no Yaiba: Yuukaku-hen,Unknown,"Action, Historical, Demons, Supernatural, Shounen",Unknown,Unknown,2023-02-17
-47790,"Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",Unknown,"Action, Fantasy",Unknown,Unknown,2023-02-17
-47792,Maou Evelogia ni Mi wo Sasage yo,Unknown,"Fantasy, Yaoi",Unknown,Suiseisha,2023-02-17
-47795,Ai Zai Xi Yuan Qian 2nd Season,Unknown,"Fantasy, Romance",16,Unknown,2023-02-17
-47917,Bocchi the Rock!,Unknown,"Music, Slice of Life, Comedy",Unknown,Unknown,2023-02-17
-48097,Wan Jie Qi Yuan,Unknown,"Martial Arts, Fantasy",40,iQIYI,2023-02-17
-48171,Summer Ghost,Unknown,Unknown,1,Unknown,2023-02-17
-48177,Ichiban Chikakute Tooi Hoshi,Unknown,"Music, Drama",1,Unknown,2023-02-17
-48239,Leadale no Daichi nite,Unknown,"Adventure, Fantasy",Unknown,Unknown,2023-02-17
-48252,"Ore, Tsushima",Unknown,"Slice of Life, Comedy, Seinen",Unknown,Unknown,2023-02-17
-48316,Kage no Jitsuryokusha ni Naritakute!,Unknown,"Action, Comedy, Fantasy",Unknown,Unknown,2023-02-17
-48363,RPG Fudousan,Unknown,"Slice of Life, Comedy, Fantasy",Unknown,Unknown,2023-02-17
-48365,Youkai Watch ♪,Unknown,"Comedy, Demons, Kids, Supernatural",Unknown,Unknown,2023-02-17
-48369,Wo Shi Da Shenxian 2nd Season,Unknown,"Action, Martial Arts, Fantasy, Shounen",16,Tencent Animation & Comics,2023-02-17
-48374,Fei Ren Zai 4th Season,Unknown,"Slice of Life, Comedy, Supernatural",12,Unknown,2023-02-17
-48375,Mahouka Koukou no Rettousei: Tsuioku-hen,Unknown,"Sci-Fi, Supernatural, Magic",Unknown,Unknown,2023-02-17
-48391,Mazica Party,Unknown,"Game, Magic, Fantasy",Unknown,Unknown,2023-02-17
-48405,Totsukuni no Shoujo OVA,Unknown,"Supernatural, Shounen",1,"flying DOG, Sound Team Don Juan, Twin Engine",2023-02-17
-48406,Re-Main,Unknown,"Sports, School",Unknown,Bandai Namco Arts,2023-02-17
-48409,Chocomatsu-san: White Day-hen,Unknown,"Comedy, Parody",3,Unknown,2023-02-17
-48411,Aria the Benedizione,Unknown,"Sci-Fi, Slice of Life, Fantasy, Shounen",1,Unknown,2023-02-17
-48413,Hataraku Maou-sama! 2nd Season,Unknown,"Comedy, Demons, Supernatural, Romance, Fantasy",Unknown,Unknown,2023-02-17
-48414,Sabikui Bisco,Unknown,"Action, Adventure, Fantasy",Unknown,"flying DOG, Hakuhodo DY Music & Pictures",2023-02-17
-48415,"Shijou Saikyou no Daimaou, Murabito A ni Tensei suru",Unknown,"Action, Fantasy, School",Unknown,Unknown,2023-02-17
-48417,"Maou Gakuin no Futekigousha: Shijou Saikyou no Maou no Shiso, Tensei shite Shison-tachi no Gakkou e",Unknown,"Magic, Fantasy, School",Unknown,Aniplex,2023-02-17
-48418,"Maou Gakuin no Futekigousha: Shijou Saikyou no Maou no Shiso, Tensei shite Shison-tachi no Gakkou e",Unknown,"Action, Demons, Magic, Fantasy, School",Unknown,Aniplex,2023-02-17
-48422,Kazoku: Haha to Shimai no Kyousei,Unknown,Hentai,Unknown,Unknown,2023-02-17
-48425,Akuma-kun (Shin Anime),Unknown,"Horror, Demons, Supernatural, Thriller",Unknown,Unknown,2023-02-17
-48426,Kitarou Tanjou: Gegege no Nazo,Unknown,"Comedy, Demons, Supernatural, Shounen",1,Unknown,2023-02-17
-48427,"The Sun, Moon and Stars",Unknown,Music,1,Unknown,2023-02-17
-48438,Mahoutsukai no Yome: Nishi no Shounen to Seiran no Kishi,Unknown,"Slice of Life, Magic, Fantasy, Shounen",3,"flying DOG, Sound Team Don Juan, Twin Engine",2023-02-17
-48441,Eiyuu Densetsu: Sen no Kiseki,Unknown,Action,Unknown,Unknown,2023-02-17
-48442,Shikaru Neko,Unknown,Slice of Life,Unknown,Unknown,2023-02-17
-48456,SK∞: Crazy Rock Jam,6.52,"Comedy, Sports",1,"Aniplex, Movic, ABC Animation",2023-02-17
-48466,Kyoukai Senki,Unknown,"Action, Mecha",Unknown,Bandai Spirits,2023-02-17
-48470,D_Cide Traumerei,Unknown,"Action, Adventure, Drama, Magic, Fantasy",Unknown,"Bushiroad, Bit grooove promotion",2023-02-17
-48471,Tsuki to Laika to Nosferatu,Unknown,"Sci-Fi, Space, Vampire",Unknown,Bandai Namco Arts,2023-02-17
-48480,Wan Jie Shen Zhu 3rd Season,Unknown,"Adventure, Fantasy",48,Unknown,2023-02-17
-48481,Daomu Biji Zhi Qinling Shen Shu,Unknown,"Adventure, Mystery, Supernatural",Unknown,Unknown,2023-02-17
-48483,Mieruko-chan,Unknown,"Comedy, Horror, Supernatural",Unknown,Kadokawa,2023-02-17
-48488,Higurashi no Naku Koro ni Sotsu,Unknown,"Mystery, Dementia, Horror, Psychological, Supernatural, Thriller",Unknown,Unknown,2023-02-17
-48491,Yama no Susume: Next Summit,Unknown,"Adventure, Slice of Life, Comedy",Unknown,Kadokawa,2023-02-17
-48492,Scarlet Nexus,Unknown,"Action, Fantasy",Unknown,Bandai Namco Arts,2023-02-17
