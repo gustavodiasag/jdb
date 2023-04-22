@@ -39,12 +39,15 @@ public class Main {
                 + "\n3) Update record by ID"
                 + "\n4) Delete record by ID"
                 + "\n5) Sort records"
-                + "\n6) Quit"
+                + "\n6) B-tree search"
+                + "\n7) Hash search"
+                + "\n8) Select record by attributes"
+                + "\n9) Quit"
                 + "\n\n");
             
             String line = "";
             
-            while (!validChoice(line)) {
+            while (!validChoice(line, 9)) {
                 System.out.print("> ");
                 line = reader.readLine();
             }
@@ -65,6 +68,12 @@ public class Main {
                     sortHelper(db, reader);
                     break;
                 case "6":
+                    treeHelper(db, reader);
+                    break;
+                case "8":
+                    indexHelper(db, reader);
+                    break;
+                case "9":
                     return;
             }
         }
@@ -104,7 +113,7 @@ public class Main {
         while (record == null) {
             System.out.print("> ");
             line = reader.readLine();
-            record = validRecord(line);
+            record = getRecord(line);
         }
         
         boolean result = db.insert(record);
@@ -141,7 +150,7 @@ public class Main {
         while (record == null) {
             System.out.print("> ");
             line = reader.readLine();
-            record = validRecord(line);
+            record = getRecord(line);
         }
 
         record.setId(id);
@@ -204,11 +213,74 @@ public class Main {
         db.show();
     }
     
-    private static boolean validChoice(String input) {
-        return input.length() == 1 && input.matches("[1-6]");
+    private static void treeHelper(Database db, BufferedReader reader)
+        throws IOException {
+        
+        System.out.println("\nDefine the ID to be retrieved:\n");
+        
+        String line = "";
+        
+        while (!validInt(line)) {
+            System.out.print("> ");
+            line = reader.readLine();
+        }
+        
+        Record record = db.treeSearch(Integer.parseInt(line));
+        
+        if (record == null) {
+            System.out.println("\nRecord with ID " + line + " does not exist!");
+            return;
+        }
+            
+        System.out.println("\nRecord successfuly found:\n" + record.toString());
     }
     
-    private static Record validRecord(String input) {
+    private static void indexHelper(Database db, BufferedReader reader)
+        throws IOException {
+        
+        System.out.println("\n"
+            + "Search by:\n"
+            + "\n1) Genre"
+            + "\n2) Producer"
+            + "\n3) Both"
+            + "\n");
+        
+        String line = "";
+        
+        while (!validChoice(line, 3)) {
+            System.out.print("> ");
+            line = reader.readLine();
+        }
+        
+        switch (line) {
+            case "1":
+                System.out.print("Genre: ");
+                break;
+            case "2":
+                System.out.print("Producer: ");
+                break;
+            case "3":
+                System.out.print("Genre and producer (genre,producer): ");
+                break;
+        }
+        
+        line = reader.readLine();
+        
+        if (line.contains(",")) {
+            String[] options = line.split(",");
+            
+            db.get(options[0], options[1]);
+            
+        } else {
+            db.get(line);
+        }
+    }
+    
+    private static boolean validChoice(String input, int range) {
+        return input.length() == 1 && input.matches("[1-" + range + "]");
+    }
+    
+    private static Record getRecord(String input) {
         try {
             return CSVParser.buildFrom(input);
             

@@ -18,7 +18,6 @@ public class CSVParser {
      * There's no reason for the source file to be provided
      * by the user.
      */
-//   private static final String csvPath = "src/main/resources/data.csv";
    private static final String csvPath = "src/test/resources/test.csv";
     
     public static Record[] parse() {

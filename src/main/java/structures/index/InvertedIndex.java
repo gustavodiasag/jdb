@@ -9,8 +9,16 @@ import java.util.Map;
 
 import main.java.database.Record;
 
+/*
+ * Allows searching operations based on attributes
+ * other than the records' id value.
+ */
 public class InvertedIndex {
     private RandomAccessFile index;
+    /*
+     * The dictionary structure is used to support a considerably
+     * large amount of keys and be flexible towards their types.
+     */
     private Map<Object, Long> map;
     
     public InvertedIndex() throws IOException {
@@ -23,7 +31,16 @@ public class InvertedIndex {
         }
     }
     
+    /*
+     * Inserts a pointer for the record in the database file for each
+     * attribute presented by it.
+     */
     public void insert(Record record, long dbPtr) throws IOException {
+        /*
+         * Genres and producers were selected for being the two
+         * most descriptive fields and also the ones with a
+         * decent record intersection.
+         */
         String[] genres = record.getGenres();
         String[] producers = record.getProducers();
         
@@ -39,6 +56,10 @@ public class InvertedIndex {
         }
     }
     
+    /*
+     * Inserts a new entry in the dictionary or a new "node" in
+     * the linked-list file.
+     */
     private <K> void insert(K key, long dbPtr) throws IOException {
         try {
             long indexPtr;
@@ -50,8 +71,19 @@ public class InvertedIndex {
                 index.seek(index.length());
                 
                 indexPtr = index.getFilePointer();
+                /*
+                 * When the first record containing the key specified
+                 * is inserted, it becomes the "head" of that key's
+                 * linked-list. 
+                 */
                 map.put(key, indexPtr);
                 
+                /*
+                 * The information stored in the index file present
+                 * the following structure:
+                 * 
+                 * <database-pointer><next-node-pointer>
+                 */
                 index.writeLong(dbPtr);
                 index.writeLong(-1);
             }
@@ -60,11 +92,22 @@ public class InvertedIndex {
         }
     }
     
+    /*
+     * Returns a list of pointers to the database file,
+     * each representing the position of a record that
+     * contains that key.
+     */
     public <K> List<Long> get(K key) throws IOException {
         try {
-            List<Long> recordPtrs = new ArrayList<Long>(); 
+            List<Long> recordPtrs = new ArrayList<Long>();
+            
+            // Head pointer
             long indexPtr = map.get(key);
             
+            /*
+             * The value -1 is used to represent the end
+             * of the linked-list.
+             */
             while (indexPtr != -1) {
                 index.seek(indexPtr);
                 recordPtrs.add(index.readLong());
@@ -79,6 +122,12 @@ public class InvertedIndex {
         }
     }
     
+    /*
+     * Returns the records that contain both of the keys specified.
+     * 
+     * Later on, the implementation should support multiple keys,
+     * so that generics can be really explored.
+     */
     public <K> List<Long> get(K firstKey, K secondKey) throws IOException {
         List<Long> firstList = get(firstKey);
         List<Long> secondList = get(secondKey);
@@ -88,6 +137,7 @@ public class InvertedIndex {
         return firstList;
     }
     
+    // Inserts a new record pointer to the linked-list.
     private void fileWrite(long indexPtr, long dbPtr) throws IOException {
         try {
             long prevPtr = -1, currPtr = indexPtr;

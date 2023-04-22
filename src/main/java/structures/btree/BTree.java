@@ -16,6 +16,7 @@ public class BTree {
         this.tree = new RandomAccessFile("tree.bin", "rw");
     }
     
+    // Writes the root to the tree file
     public void build() throws IOException {
         try {
             BTreePage root = new BTreePage(order);
@@ -24,6 +25,22 @@ public class BTree {
         } catch (IOException e) {
             throw new IOException("Error while initializing the tree", e);
         }
+    }
+    
+    public long search(int id) throws IOException {
+        BTreeKey key = new BTreeKey(id, -1);
+        BTreePage page = new BTreePage(order);
+        
+        long pagePos = getPage(key, rootPos);
+        page.deserialize(tree, pagePos);
+        
+        for (BTreeKey k : page.getKeys()) {
+            if (key.getId() == id) {
+                return k.getDbPtr();
+            }
+        }
+        
+        return -1;
     }
     
     public void insert(Record record, long dbPtr) throws IOException {
@@ -59,9 +76,8 @@ public class BTree {
     private void split(BTreePage page, BTreeKey key) throws IOException {
         try {
             BTreePage parent, right = new BTreePage(order);
-            
+            boolean control = true;
             int splitPos = (order - 1)/2;
-            
             BTreeKey pivot = page.getKey(splitPos);
             
             for (int i = splitPos + 1; i < order - 1; i++)
@@ -89,9 +105,13 @@ public class BTree {
             
             pivot.setTreePtr(right.getPos());
             
-            if (parent.getElements() == order - 1) {
+            if (parent.getElements() >= order - 1) {
                 split(parent, pivot);
                 
+                long pagePos = getPage(pivot, rootPos);
+                parent.deserialize(tree, pagePos);
+                
+                control = false;
             }
             
             right.setParent(parent.getPos());
@@ -110,7 +130,9 @@ public class BTree {
             
             page.serialize(tree);
             
-            parent.insertKey(pivot);
+            if (control)
+                parent.insertKey(pivot);
+            
             parent.setLeaf(false);
             
             if (page.getParent() == rootPos && parent.getTreePtr() == -1)
@@ -121,6 +143,70 @@ public class BTree {
             
         } catch (IOException e) {
             throw new IOException("Unable to split page", e);
+        }
+    }
+    
+    private long getPage(BTreeKey key, long pos) throws IOException {
+        try {
+            BTreePage page = new BTreePage(order);
+            page.deserialize(tree, pos);
+            
+            int i = 0, m = 0, n = page.getElements() - 1;
+            
+            while (i <= n) {
+                m = (i + n)/2;
+                
+                if (page.getKey(m).getId() == key.getId())
+                    return page.getPos();
+                
+                if (page.getKey(m).getId() < key.getId()) {
+                    i = m + 1;
+                    
+                } else {
+                    i = m - 1;
+                }
+            }
+            
+            n = (n == -1) ? 0 : n;
+            
+            if (n == 0) {
+                if (page.getKey(0).getId() > key.getId()) {
+                    return getPage(key, page.getTreePtr());
+                } else {
+                    return getPage(key, page.getKey(0).getTreePtr());
+                }
+            } else {
+                if (page.getKey(m).getId() < key.getId()) {
+                    return getPage(key, page.getKey(m).getTreePtr());
+                } else {
+                    return getPage(key, page.getKey(m - 1).getTreePtr());
+                }
+            }
+                    
+        } catch (IOException e) {
+            throw new IOException("Unable to get page", e);
+        }
+    }
+    
+    public void show() throws IOException {
+        tree.seek(rootPos);
+        
+        while(tree.getFilePointer() < tree.length()) {
+            System.out.println();
+            System.out.println("==============");
+            System.out.println("Posicao da Pagina: " + tree.getFilePointer());
+            System.out.println("Ponteiro Pai: " + tree.readLong());
+            int n = tree.read();
+            System.out.println("Folha: " + tree.readBoolean());
+            System.out.println("Total de Chaves: " + n);
+            System.out.println("Primeiro Ponteiro da Pagina: " + tree.readLong());
+            for(int i = 0; i < 7; i++) {
+               if(i < n) {
+                  System.out.println("Id: " + tree.readInt() + " Position: " + tree.readLong() + " Pointer: " + tree.readLong());
+               } else {
+                  tree.readInt(); tree.readLong(); tree.readLong();
+               }
+            }
         }
     }
     
@@ -135,23 +221,5 @@ public class BTree {
         }
         
         return page.getKey(i - 1).getTreePtr();
-    }
-    
-    public void show() throws IOException {
-        tree.seek(rootPos);
-        
-        while (tree.getFilePointer() < tree.length()) {
-            System.out.println();
-            System.out.println("==========================");
-            System.out.println("Pos: " + tree.getFilePointer());
-            System.out.println("Pai: " + tree.readLong());
-            System.out.println("Tamanho: " + tree.readByte());
-            System.out.println("Folha: " + tree.readBoolean());
-            System.out.println("Primeiro ptr: " + tree.readLong());
-            
-            for (int i = 0; i < 7; i++) {
-                System.out.println("Id: " + tree.readInt() + " Ptr arq: " + tree.readLong() + " Ptr arv: " + tree.readLong());
-            }
-        }
     }
 }

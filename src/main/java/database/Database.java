@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import main.java.structures.btree.BTree;
+import main.java.structures.hash.Hash;
 import main.java.structures.index.InvertedIndex;
 
 /*
@@ -20,12 +21,16 @@ public class Database implements Sorting {
      * in the file specified.
      */
     private final RandomAccessFile raf;
-    private final InvertedIndex index;
+    
+    // Index structures.
     private final BTree tree;
+    // private final Hash hash;
+    private final InvertedIndex index;
 
     public Database(File file) throws IOException {
         this.raf = new RandomAccessFile(file, "rw");
         this.tree = new BTree(8);
+        //this.hash = new Hash();
         this.index = new InvertedIndex();
     }
     
@@ -56,8 +61,25 @@ public class Database implements Sorting {
         }
     }
     
-    public void get(String genre) throws IOException {
-        List<Long> recordPtrs = index.get(genre);
+    public Record treeSearch(int id) throws IOException {
+        try {
+            long dbPtr = tree.search(id);
+            
+            if (dbPtr == -1)
+                return null;
+            
+            raf.seek(dbPtr);
+            
+            return Record.deserialize(raf);
+                
+        } catch (IOException e) {
+            throw new IOException(
+                "Error while retrieving record with id: " + id, e);
+        }
+    }
+    
+    public <K> void get(K key) throws IOException {
+        List<Long> recordPtrs = index.get(key);
         
         for (long recordPtr : recordPtrs) {
             raf.seek(recordPtr);
@@ -66,8 +88,8 @@ public class Database implements Sorting {
         }
     }
     
-    public void get(String genre, String producer) throws IOException {
-        List<Long> recordPtrs = index.get(genre, producer);
+    public <K> void get(K firstKey, K secondKey) throws IOException {
+        List<Long> recordPtrs = index.get(firstKey, secondKey);
         
         for (long recordPtr : recordPtrs) {
             raf.seek(recordPtr);
@@ -103,7 +125,7 @@ public class Database implements Sorting {
 
         } catch (IOException e) {
             throw new IOException(
-                    "Error while retrieving record with id: " + id, e);
+                "Error while retrieving record with id: " + id, e);
         }
 
         return null;
