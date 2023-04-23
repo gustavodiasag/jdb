@@ -61,6 +61,7 @@ public class Main {
                     break;
                 case "3":
                     updationHelper(db, reader);
+                    break;
                 case "4":
                     deletionHelper(db, reader);
                     break;
@@ -69,6 +70,9 @@ public class Main {
                     break;
                 case "6":
                     treeHelper(db, reader);
+                    break;
+                case "7":
+                    hashHelper(db, reader);
                     break;
                 case "8":
                     indexHelper(db, reader);
@@ -226,6 +230,27 @@ public class Main {
         }
         
         Record record = db.treeSearch(Integer.parseInt(line));
+        
+        if (record == null) {
+            System.out.println("\nRecord with ID " + line + " does not exist!");
+            return;
+        }
+            
+        System.out.println("\nRecord successfuly found:\n" + record.toString());
+    }
+
+    private static void hashHelper(Database db, BufferedReader reader) throws IOException {
+        
+        System.out.println("\nDefine the ID to be retrieved:\n");
+        
+        String line = "";
+        
+        while (!validInt(line)) {
+            System.out.print("> ");
+            line = reader.readLine();
+        }
+        
+        Record record = db.hashSearch(Integer.parseInt(line));
         
         if (record == null) {
             System.out.println("\nRecord with ID " + line + " does not exist!");

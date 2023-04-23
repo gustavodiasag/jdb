@@ -24,13 +24,13 @@ public class Database implements Sorting {
     
     // Index structures.
     private final BTree tree;
-    // private final Hash hash;
+    private final Hash hash;
     private final InvertedIndex index;
 
     public Database(File file) throws IOException {
         this.raf = new RandomAccessFile(file, "rw");
         this.tree = new BTree(8);
-        //this.hash = new Hash();
+        this.hash = new Hash();
         this.index = new InvertedIndex();
     }
     
@@ -52,6 +52,7 @@ public class Database implements Sorting {
                 
                 index.insert(record, pos);
                 tree.insert(record, pos);
+                hash.add(record.getId(), pos);
             }
             
             tree.show();
@@ -69,6 +70,23 @@ public class Database implements Sorting {
                 return null;
             
             raf.seek(dbPtr);
+            
+            return Record.deserialize(raf);
+                
+        } catch (IOException e) {
+            throw new IOException(
+                "Error while retrieving record with id: " + id, e);
+        }
+    }
+
+    public Record hashSearch(int id) throws IOException {
+        try {
+            long hashPtr = hash.search(id);
+            
+            if (hashPtr == -1)
+                return null;
+            
+            raf.seek(hashPtr);
             
             return Record.deserialize(raf);
                 
@@ -140,10 +158,18 @@ public class Database implements Sorting {
             record.setId(getLastId() + 1);
             raf.seek(0);
             raf.writeInt(record.getId());
-
+            
             // New records are always inserted at the end.
-            raf.seek(raf.length());
+            long dbPtr = raf.length();
+            raf.seek(dbPtr);
             record.serialize(raf);
+
+            tree.insert(record, dbPtr);
+            hash.add(record.getId(), dbPtr);
+            index.insert(record, dbPtr);
+
+
+            //tree.show();
 
             return true;
 

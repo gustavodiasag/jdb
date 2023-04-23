@@ -141,4 +141,16 @@ public class Bucket {
     }
   }
 
+  public long getPos(int id) {
+    long pos = -1;
+    for(BucketNode node : nodes) {
+      if(node.key == id) {
+        pos = node.pointer;
+        break;
+      }
+    }
+
+    return pos;
+  };
+
 }
