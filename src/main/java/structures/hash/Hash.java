@@ -12,7 +12,6 @@ public class Hash {
   private byte bucketLength = 87;
   private int maxEle = 7;
   public ArrayList<Long> directory;
-  private final RandomAccessFile raf;
   private final RandomAccessFile buckets;
   /*
    * Cada bucket pode armazenar até 7 chaves
@@ -22,16 +21,12 @@ public class Hash {
    * = 1 + 2 + 7 * (4 + 8) = 87
    */
 
-  public Hash(File file, int version) throws IOException {
+  public Hash() throws IOException {
     this.directory = new ArrayList<Long>();
     this.globalDepth = 1;
-    this.raf = new RandomAccessFile(file, "r");
-    // apaga os buckets antigos para gerar um novo a partir de cada inicialização
-    File bucketBin = new File("buckets.bin");
-    bucketBin.delete();
 
     this.buckets = new RandomAccessFile("buckets.bin", "rw");
-    this.initialize(version);
+    this.initialize();
   }
 
   private int hash(int id) {
@@ -42,11 +37,8 @@ public class Hash {
     return (int) (id % Math.pow(2, depth));
   }
 
-  public void initialize(int version) throws IOException {
+  public void initialize() throws IOException {
     try {
-      raf.seek(0);
-      raf.seek(4);
-
       // crio o ponteiro para os dois primeiros buckets
       directory.add((long) 0);
       directory.add((long) bucketLength);
@@ -56,13 +48,6 @@ public class Hash {
       for (int i = 0; i < 2; i++) {
         Bucket newBucket = new Bucket((short) globalDepth);
         newBucket.serialize(buckets);
-      }
-
-      while (!eof(raf)) {
-        long pointer = raf.getFilePointer();
-        Record record = Record.deserialize(raf);
-        int id = record.getId();
-        add(id, pointer);
       }
 
     } catch (IOException e) {
@@ -182,6 +167,15 @@ public class Hash {
 
     buckets.seek(directory.get(newPos));
     newBucket.serialize(buckets);
+  }
+
+  public long search(int id) throws IOException {
+    int hash = hash(id);
+
+    buckets.seek(directory.get(hash));
+    Bucket bucket = Bucket.deserialize(buckets);
+
+    return bucket.getPos(id);
   }
 
   private boolean eof(RandomAccessFile raf) throws IOException {
