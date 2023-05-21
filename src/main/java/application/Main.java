@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 
-import main.java.algorithms.LZW.LZW;
 import main.java.database.*;
 
 public class Main {
@@ -20,11 +19,7 @@ public class Main {
             
             db.build();
 
-            LZW lzw = new LZW();
-
-            lzw.compress(file);
-            lzw.decompress(1);
-            // prompt(db);
+            prompt(db);
 
         } catch (IOException e) {
             System.err.println(e.getLocalizedMessage());

@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import main.java.algorithms.Huffman.Huffman;
+import main.java.algorithms.LZW.LZW;
 import main.java.structures.btree.BTree;
 import main.java.structures.hash.Hash;
 import main.java.structures.index.InvertedIndex;
@@ -27,11 +29,17 @@ public class Database implements Sorting {
     private final Hash hash;
     private final InvertedIndex index;
 
+    // Data compression algorithms
+    private final Huffman huffman;
+    private final LZW lzw;
+
     public Database(File file) throws IOException {
         this.raf = new RandomAccessFile(file, "rw");
         this.tree = new BTree(8);
         this.hash = new Hash();
         this.index = new InvertedIndex();
+        this.huffman = new Huffman();
+        this.lzw = new LZW();
     }
     
     public void build() throws IOException {
@@ -57,6 +65,16 @@ public class Database implements Sorting {
             
         } catch (IOException e) {
             throw new IOException("Error while initializing the database", e);
+        }
+    }
+
+    public void compress(int option, File inputFile) throws IOException {
+        switch(option) {
+            case 1:
+                huffman.compress(inputFile);
+                break;
+            case 2:
+                lzw.compress(inputFile);
         }
     }
     
