@@ -36,7 +36,7 @@ public class LZW {
           dictionary.addSequence(currentSequence.toString());
           short prefixCode = (short) dictionary.getCode(currentSequence.substring(0, currentSequence.length() - 1));
           if(prefixCode > -1) { 
-            outputRAF.writeShort(prefixCode );
+            outputRAF.writeShort(prefixCode -1);
           }
           currentSequence.delete(0, currentSequence.length() - 1);
         }
@@ -45,7 +45,7 @@ public class LZW {
       if (currentSequence.length() > 0) {
         short code = (short) dictionary.getCode(currentSequence.toString());
         if(code > -1) { 
-          outputRAF.writeShort(code );
+          outputRAF.writeShort(code -1);
         }
       }
     } catch (IOException e) {

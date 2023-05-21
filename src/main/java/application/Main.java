@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 
+import main.java.algorithms.LZW.LZW;
 import main.java.database.*;
 
 public class Main {
+    static File file;
     public static void main(String[] args) {
 
         // Database file.
-        File file = new File("db.bin");
+        Main.file = new File("db.bin");
         
         try {
             Database db = new Database(file);
@@ -42,7 +44,8 @@ public class Main {
                 + "\n6) B-tree search"
                 + "\n7) Hash search"
                 + "\n8) Select record by attributes"
-                + "\n9) Quit"
+                + "\n9) Compress DB"
+                + "\n10) Quit"
                 + "\n\n");
             
             String line = "";
@@ -78,6 +81,15 @@ public class Main {
                     indexHelper(db, reader);
                     break;
                 case "9":
+                    String option;
+                    System.out.println("Select algorithm to compress: ");
+                    System.out.println("1) Huffman");
+                    System.out.println("2) LZW");
+                    System.out.print("> ");
+                    option = reader.readLine();
+                    db.compress((Integer.parseInt(option)), file);
+                    
+                case "10":
                     return;
             }
         }
