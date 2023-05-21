@@ -1,0 +1,13 @@
+
+Original file: db.bin size: 38423 bytes
+
+Compacted file: db.binLZW1.bin size: 4598 bytes
+
+Compression ratio: 0.11966790724305755 bytes
+
+Compression Factor:8.35645933014354 bytes
+
+Compression Gain: 212.30348122820754 %
+
+Execution time: 280 ms
+Execution time: 15 ms
