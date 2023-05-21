@@ -55,8 +55,6 @@ public class Database implements Sorting {
                 hash.add(record.getId(), pos);
             }
             
-            tree.show();
-            
         } catch (IOException e) {
             throw new IOException("Error while initializing the database", e);
         }
