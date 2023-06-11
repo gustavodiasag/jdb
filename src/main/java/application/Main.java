@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 
-import main.java.algorithms.LZW.LZW;
+import main.java.algorithms.KMP.KMP;
 import main.java.database.*;
 
 public class Main {
@@ -45,12 +45,13 @@ public class Main {
                 + "\n7) Hash search"
                 + "\n8) Select record by attributes"
                 + "\n9) Compress DB"
-                + "\n10) Quit"
+                + "\n10) Pattern match"
+                + "\n11) Quit"
                 + "\n\n");
             
             String line = "";
             
-            while (!validChoice(line, 9)) {
+            while (!validChoice(line, 10)) {
                 System.out.print("> ");
                 line = reader.readLine();
             }
@@ -88,8 +89,15 @@ public class Main {
                     System.out.print("> ");
                     option = reader.readLine();
                     db.compress((Integer.parseInt(option)), file);
-                    
+                    break;
                 case "10":
+                    String patter;
+                    System.out.println("Enter pattern to match: ");
+                    System.out.print("> ");
+                    patter = reader.readLine();
+                    KMP.search(patter);
+                    break;
+                case "11":
                     return;
             }
         }
@@ -314,7 +322,11 @@ public class Main {
     }
     
     private static boolean validChoice(String input, int range) {
-        return input.length() == 1 && input.matches("[1-" + range + "]");
+        if(range < 10) {
+            return input.length() == 1 && input.matches("[1-" + range + "]");
+        } else {
+            return input.matches("[1-9]|1[0" + range + "]");
+        }
     }
     
     private static Record getRecord(String input) {
@@ -331,6 +343,6 @@ public class Main {
     }
     
     private static boolean validInt(String attribute) {
-        return attribute.matches("[0-9]+");
+        return attribute.matches("[0-10]+");
     }
 }
