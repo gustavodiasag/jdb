@@ -11,7 +11,7 @@ public class KMP {
   public static int[] prefixTable;
   public static String pattern;
   public static long executionTime;
-  public static String path = "src/main/resources/input.txt";
+  public static String path = "src/test/resources/test.csv";
 
   public static void search(String pattern) {
     KMP.pattern = pattern;
@@ -117,9 +117,9 @@ public class KMP {
     System.out.println("\nExecution time: " + executionTime + " ms");
 
     if (occurrences.isEmpty()) {
-      System.out.println("\nNenhuma ocorrência encontrada.");
+      System.out.println("\nNo occurrence found.");
     } else {
-      System.out.println("\nOcorrências encontradas nas seguintes posições:");
+      System.out.println("\nOccurrence found in the positions:");
       for (int index : occurrences) {
         System.out.print(index + " ");
       }

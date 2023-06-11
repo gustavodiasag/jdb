@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 
-import main.java.algorithms.KMP.KMP;
-import main.java.algorithms.bm.BoyerMoore;
 import main.java.database.*;
 
 public class Main {

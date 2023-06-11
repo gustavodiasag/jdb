@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import main.java.algorithms.Huffman.Huffman;
+import main.java.algorithms.KMP.KMP;
 import main.java.algorithms.LZW.LZW;
 import main.java.algorithms.bm.BoyerMoore;
 import main.java.structures.btree.BTree;
@@ -80,6 +81,7 @@ public class Database implements Sorting {
                 bm.search(pattern);
                 break;
             case "2":
+                KMP.search(pattern);
                 break;
         }
     }
