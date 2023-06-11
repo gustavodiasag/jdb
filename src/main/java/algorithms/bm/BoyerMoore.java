@@ -18,15 +18,24 @@ public class BoyerMoore {
         try {
             byte[] pattern = input.getBytes("UTF-8");
 
-            match(text, pattern);
+            long start = System.currentTimeMillis();
+
+            int comparisons = match(text, pattern);
+
+            long end = System.currentTimeMillis();
+            long time = end - start;
+
+            System.out.println("\nComparisons: " + comparisons);
+
+            System.out.println("\nExecution time: " + time + " ms");
 
         } catch (IOException e) {
             throw new IOException("Error while search for pattern", e);
         }
     }
 
-    public void match(byte[] text, byte[] pattern) {
-        int m = pattern.length;
+    public int match(byte[] text, byte[] pattern) {
+        int m = pattern.length, comparisons = 0;
         int movements[] = new int[MAX_VAL];
 
         for (int i = 0; i < MAX_VAL; i++)
@@ -40,6 +49,7 @@ public class BoyerMoore {
         while (i < text.length - 1) {
             int j = i, k = m - 1;
 
+            comparisons++;
             while (k >= 0 && text[j] == pattern[k]) {
                 j--;
                 k--;
@@ -50,5 +60,7 @@ public class BoyerMoore {
             
             i = i + movements[text[i + 1]];
         }
+
+        return comparisons;
     }
 }
