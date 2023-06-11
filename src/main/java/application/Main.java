@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 
 import main.java.algorithms.KMP.KMP;
+import main.java.algorithms.bm.BoyerMoore;
 import main.java.database.*;
 
 public class Main {
@@ -82,20 +83,24 @@ public class Main {
                     indexHelper(db, reader);
                     break;
                 case "9":
-                    String option;
-                    System.out.println("Select algorithm to compress: ");
+                    String compression;
+                    System.out.println("\nSelect algorithm to compress: ");
                     System.out.println("1) Huffman");
                     System.out.println("2) LZW");
-                    System.out.print("> ");
-                    option = reader.readLine();
-                    db.compress((Integer.parseInt(option)), file);
+                    System.out.print("\n> ");
+                    compression = reader.readLine();
+                    db.compress((Integer.parseInt(compression)), file);
                     break;
                 case "10":
-                    String patter;
-                    System.out.println("Enter pattern to match: ");
-                    System.out.print("> ");
-                    patter = reader.readLine();
-                    KMP.search(patter);
+                    String search;
+                    System.out.println("\nSelect algorithm to match: ");
+                    System.out.println("1) Boyer-Moore");
+                    System.out.println("2) KMP");
+                    System.out.print("\n> ");
+                    search = reader.readLine();
+                    System.out.println("\nPattern:");
+                    System.out.print("\n> ");
+                    db.match(search, reader.readLine());
                     break;
                 case "11":
                     return;

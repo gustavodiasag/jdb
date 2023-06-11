@@ -9,6 +9,7 @@ import java.util.List;
 
 import main.java.algorithms.Huffman.Huffman;
 import main.java.algorithms.LZW.LZW;
+import main.java.algorithms.bm.BoyerMoore;
 import main.java.structures.btree.BTree;
 import main.java.structures.hash.Hash;
 import main.java.structures.index.InvertedIndex;
@@ -32,6 +33,9 @@ public class Database implements Sorting {
     // Data compression algorithms
     private final Huffman huffman;
     private final LZW lzw;
+
+    // Pattern matching algorithms
+    private BoyerMoore bm;
 
     public Database(File file) throws IOException {
         this.raf = new RandomAccessFile(file, "rw");
@@ -62,9 +66,21 @@ public class Database implements Sorting {
                 tree.insert(record, pos);
                 hash.add(record.getId(), pos);
             }
+
+            bm = new BoyerMoore(raf);
             
         } catch (IOException e) {
             throw new IOException("Error while initializing the database", e);
+        }
+    }
+
+    public void match(String option, String pattern) throws IOException {
+        switch (option) {
+            case "1":
+                bm.search(pattern);
+                break;
+            case "2":
+                break;
         }
     }
 
