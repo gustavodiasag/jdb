@@ -20,7 +20,7 @@ public class BoyerMoore {
 
             long start = System.currentTimeMillis();
 
-            int comparisons = match(text, pattern);
+            int comparisons = match(pattern);
 
             long end = System.currentTimeMillis();
             long time = end - start;
@@ -34,12 +34,12 @@ public class BoyerMoore {
         }
     }
 
-    public int match(byte[] text, byte[] pattern) {
+    public int match(byte[] pattern) {
         int m = pattern.length, comparisons = 0;
         int movements[] = new int[MAX_VAL];
 
         for (int i = 0; i < MAX_VAL; i++)
-            movements[i] = m +1;
+            movements[i] = m + 1;
         
         for (int i = 0; i < m; i++)
             movements[pattern[i]] = m - i;
@@ -49,8 +49,8 @@ public class BoyerMoore {
         while (i < text.length - 1) {
             int j = i, k = m - 1;
 
-            comparisons++;
-            while (k >= 0 && text[j] == pattern[k]) {
+            while ((k >= 0) && (text[j] == pattern[k])) {
+                comparisons++;
                 j--;
                 k--;
             }
@@ -58,7 +58,9 @@ public class BoyerMoore {
             if (k < 0)
                 System.out.println("\nPattern found at " + (j + 1));
             
-            i = i + movements[text[i + 1]];
+            int index = text[i + 1] & 0xFF;
+
+            i = i + movements[index];
         }
 
         return comparisons;
