@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 
 import main.java.database.*;
+import main.java.database.Record;
 
 public class Main {
     static File file;
@@ -345,7 +346,7 @@ public class Main {
         return input.compareTo("y") == 0 || input.compareTo("n") == 0;
     }
     
-    private static boolean validInt(String attribute) {
-        return attribute.matches("[0-10]+");
+    private static boolean validInt(String input) {
+        return input.matches("[0-10]+");
     }
 }

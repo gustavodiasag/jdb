@@ -11,6 +11,7 @@ import main.java.algorithms.Huffman.Huffman;
 import main.java.algorithms.KMP.KMP;
 import main.java.algorithms.LZW.LZW;
 import main.java.algorithms.bm.BoyerMoore;
+import main.java.algorithms.OTP.Otp;
 import main.java.structures.btree.BTree;
 import main.java.structures.hash.Hash;
 import main.java.structures.index.InvertedIndex;
@@ -69,7 +70,7 @@ public class Database implements Sorting {
             }
 
             bm = new BoyerMoore(raf);
-            
+
         } catch (IOException e) {
             throw new IOException("Error while initializing the database", e);
         }
