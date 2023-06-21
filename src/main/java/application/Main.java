@@ -347,6 +347,6 @@ public class Main {
     }
     
     private static boolean validInt(String input) {
-        return input.matches("[0-10]+");
+        return input.matches("[0-9]+");
     }
 }

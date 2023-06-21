@@ -71,6 +71,8 @@ public class Database implements Sorting {
 
             bm = new BoyerMoore(raf);
 
+            Otp.encrypt(raf);
+
         } catch (IOException e) {
             throw new IOException("Error while initializing the database", e);
         }
@@ -157,6 +159,7 @@ public class Database implements Sorting {
      */
     public Record get(int id) throws IOException {
         try {
+            Otp.decrypt(raf);
             // Header is not useful for this operation.
             raf.seek(Integer.BYTES);
 
