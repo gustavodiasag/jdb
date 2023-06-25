@@ -12,6 +12,7 @@ import main.java.algorithms.KMP.KMP;
 import main.java.algorithms.LZW.LZW;
 import main.java.algorithms.bm.BoyerMoore;
 import main.java.algorithms.OTP.Otp;
+import main.java.algorithms.RSA.RSA;
 import main.java.structures.btree.BTree;
 import main.java.structures.hash.Hash;
 import main.java.structures.index.InvertedIndex;
@@ -38,6 +39,8 @@ public class Database implements Sorting {
 
     // Pattern matching algorithms
     private BoyerMoore bm;
+
+    private int encryptKey;
 
     public Database(File file) throws IOException {
         this.raf = new RandomAccessFile(file, "rw");
@@ -71,7 +74,7 @@ public class Database implements Sorting {
 
             bm = new BoyerMoore(raf);
 
-            Otp.encrypt(raf);
+            // Otp.encrypt(raf);
 
         } catch (IOException e) {
             throw new IOException("Error while initializing the database", e);
@@ -157,9 +160,14 @@ public class Database implements Sorting {
      * Returns the entity with the corresponding id
      * and null if it isn't found in the database.
      */
-    public Record get(int id) throws IOException {
+    public Record get(int id) throws Exception {
         try {
-            Otp.decrypt(raf);
+            if (encryptKey == 1) {
+                Otp.decrypt(raf);
+            } else {
+                RSA.decryptFile(raf);
+            }
+            
             // Header is not useful for this operation.
             raf.seek(Integer.BYTES);
 
@@ -555,6 +563,16 @@ public class Database implements Sorting {
         } catch (IOException e) {
             throw new IOException(
                     "Error while checking for EOF", e);
+        }
+    }
+
+    public void encrypt(int key) throws Exception {
+        this.encryptKey = key;
+
+        if(encryptKey == 1) {
+            Otp.encrypt(raf);
+        } else {
+            RSA.encryptFile(raf);
         }
     }
 }

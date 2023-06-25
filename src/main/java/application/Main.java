@@ -11,7 +11,7 @@ import main.java.database.Record;
 
 public class Main {
     static File file;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NumberFormatException, Exception {
 
         // Database file.
         Main.file = new File("db.bin");
@@ -29,7 +29,7 @@ public class Main {
         }
     }
     
-    private static void prompt(Database db) throws IOException {
+    private static void prompt(Database db) throws NumberFormatException, Exception {
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(input);
         
@@ -46,12 +46,13 @@ public class Main {
                 + "\n8) Select record by attributes"
                 + "\n9) Compress DB"
                 + "\n10) Pattern match"
-                + "\n11) Quit"
+                + "\n11) Encrypt"
+                + "\n12) Quit"
                 + "\n\n");
             
             String line = "";
             
-            while (!validChoice(line, 10)) {
+            while (!validChoice(line, 12)) {
                 System.out.print("> ");
                 line = reader.readLine();
             }
@@ -102,13 +103,22 @@ public class Main {
                     db.match(search, reader.readLine());
                     break;
                 case "11":
+                    String cryptography;
+                    System.out.println("\nSelect algorithm to encrypt: ");
+                    System.out.println("1) One time pad");
+                    System.out.println("2) RSA");
+                    System.out.print("\n> ");
+                    cryptography = reader.readLine(); 
+                    db.encrypt(Integer.parseInt(cryptography));
+                    break;
+                case "12":
                     return;
             }
         }
     }
     
     private static void selectionHelper(Database db, BufferedReader reader)
-        throws IOException {
+        throws NumberFormatException, Exception {
         
         System.out.println("\nDefine the ID to be retrieved:\n");
         

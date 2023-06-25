@@ -32,7 +32,7 @@ public class ByteManipulationTests {
     }
     
     @Test
-    public void testSelection() {
+    public void testSelection() throws Exception {
         try {
             Database db = new Database(new File(binPath));
             
